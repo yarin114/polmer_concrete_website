@@ -438,26 +438,7 @@
         margin-bottom: 2rem;
     }
 
-    /* ── WORKSHOPS ── */
-    .workshops-section {
-        background: var(--dark);
-        padding: 7rem 2.5rem;
-    }
-    .workshops-inner {
-        max-width: 1100px; margin: 0 auto;
-        display: grid; grid-template-columns: 1fr 1.4fr;
-        gap: 5rem; align-items: center;
-    }
-    .workshops-left .section-label { color: var(--accent); }
-    .workshops-left h2 {
-        font-size: clamp(1.8rem, 3vw, 3rem);
-        font-weight: 300; color: white;
-        line-height: 1.2; margin-bottom: 1.4rem;
-    }
-    .workshops-left p {
-        color: rgba(255,255,255,.6); line-height: 1.9;
-        font-size: .97rem; font-weight: 300; margin-bottom: 2.2rem;
-    }
+    /* ── WORKSHOPS – full redesign ── */
     .btn-wa {
         display: inline-flex; align-items: center; gap: .6rem;
         background: var(--green); color: white;
@@ -467,30 +448,211 @@
     }
     .btn-wa:hover { background: #1ebe5d; transform: translateY(-2px); }
 
-    .workshops-right {
-        display: flex; flex-direction: column; gap: 1.2rem;
+    /* 1 — cinematic intro */
+    .ws-hero {
+        position: relative; overflow: hidden;
+        background: var(--dark);
+        padding: 7rem 2.5rem 5rem;
+        text-align: center;
     }
-    .workshop-card {
-        border: 1px solid rgba(255,255,255,.1);
-        padding: 1.6rem 1.8rem;
-        display: flex; gap: 1.2rem; align-items: flex-start;
-        transition: border-color .2s, background .2s;
+    .ws-hero::before {
+        content: 'WORKSHOPS';
+        position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%,-50%);
+        font-size: clamp(5rem, 16vw, 14rem);
+        font-weight: 900; letter-spacing: -.02em;
+        color: rgba(255,255,255,.03);
+        white-space: nowrap; pointer-events: none;
+        user-select: none;
     }
-    .workshop-card:hover {
-        border-color: rgba(156,122,60,.5);
-        background: rgba(156,122,60,.06);
+    .ws-hero .section-label { color: var(--accent); }
+    .ws-hero h2 {
+        font-size: clamp(2.2rem, 5vw, 4.5rem);
+        font-weight: 300; color: white;
+        line-height: 1.1; margin: 1rem 0 1.4rem;
     }
-    .workshop-icon {
-        font-size: 1.6rem; flex-shrink: 0;
-        margin-top: .1rem;
+    .ws-hero h2 strong { font-weight: 700; display: block; }
+    .ws-hero > p {
+        color: rgba(255,255,255,.55); font-size: 1rem;
+        font-weight: 300; max-width: 540px;
+        margin: 0 auto; line-height: 1.9;
     }
-    .workshop-card h3 {
-        color: white; font-size: 1rem; font-weight: 500;
-        margin-bottom: .35rem;
+
+    /* 2 — workshop type cards */
+    .ws-cards-section {
+        background: var(--bg);
+        padding: 5rem 2.5rem;
     }
-    .workshop-card p {
-        color: rgba(255,255,255,.5); font-size: .88rem;
-        font-weight: 300; line-height: 1.7;
+    .ws-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem; max-width: 1200px; margin: 0 auto;
+    }
+    .ws-card {
+        background: var(--white);
+        overflow: hidden;
+        cursor: default;
+        transition: transform .35s ease, box-shadow .35s ease;
+    }
+    .ws-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 24px 60px rgba(22,19,15,.14);
+    }
+    .ws-card-img {
+        position: relative;
+        aspect-ratio: 3/4; overflow: hidden;
+    }
+    .ws-card-img img {
+        width: 100%; height: 100%; object-fit: cover;
+        transition: transform .7s ease;
+    }
+    .ws-card:hover .ws-card-img img { transform: scale(1.07); }
+    .ws-card-img-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(to top,
+            rgba(22,19,15,.82) 0%,
+            rgba(22,19,15,.1) 55%,
+            transparent 100%);
+    }
+    .ws-card-img-label {
+        position: absolute; bottom: 1.4rem; right: 1.4rem; left: 1.4rem;
+        color: white;
+    }
+    .ws-card-img-label h3 {
+        font-size: 1.3rem; font-weight: 400; line-height: 1.2;
+    }
+    .ws-card-img-label .ws-level {
+        display: inline-block; margin-top: .5rem;
+        font-size: .68rem; letter-spacing: .18em;
+        color: var(--accent); font-weight: 400;
+        border: 1px solid var(--accent);
+        padding: .18rem .6rem; border-radius: 2px;
+    }
+    .ws-card-body {
+        padding: 1.5rem 1.6rem 1.8rem;
+    }
+    .ws-tags {
+        display: flex; gap: .5rem; flex-wrap: wrap;
+        margin-bottom: 1rem;
+    }
+    .ws-tag {
+        display: flex; align-items: center; gap: .3rem;
+        background: var(--bg); color: var(--muted);
+        font-size: .72rem; font-weight: 400;
+        padding: .3rem .7rem; border-radius: 2px;
+        letter-spacing: .04em;
+    }
+    .ws-card-body p {
+        font-size: .9rem; color: var(--muted);
+        font-weight: 300; line-height: 1.8;
+        margin-bottom: 1.4rem;
+    }
+    .ws-card-cta {
+        display: inline-flex; align-items: center; gap: .5rem;
+        background: var(--dark); color: white;
+        padding: .7rem 1.4rem; border-radius: 2px;
+        text-decoration: none; font-size: .85rem; font-weight: 500;
+        letter-spacing: .05em;
+        transition: background .2s, transform .2s;
+    }
+    .ws-card-cta:hover { background: var(--mid); transform: translateY(-2px); }
+
+    /* 3 — stats strip */
+    .ws-stats {
+        background: var(--dark);
+        padding: 3.5rem 2.5rem;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem; max-width: 100%;
+        border-top: 1px solid rgba(255,255,255,.06);
+        border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .ws-stat {
+        text-align: center; padding: 1rem;
+        border-left: 1px solid rgba(255,255,255,.07);
+    }
+    .ws-stat:last-child { border-left: none; }
+    .ws-stat-num {
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-weight: 300; color: white;
+        line-height: 1; margin-bottom: .4rem;
+    }
+    .ws-stat-num span { color: var(--accent); }
+    .ws-stat-label {
+        font-size: .72rem; color: rgba(255,255,255,.4);
+        letter-spacing: .18em; font-weight: 300;
+    }
+
+    /* 4 — "what you'll create" gallery */
+    .ws-gallery-section {
+        background: var(--white);
+        padding: 4rem 0 4.5rem;
+        overflow: hidden;
+    }
+    .ws-gallery-header {
+        text-align: center;
+        padding: 0 2.5rem 2.5rem;
+    }
+    .ws-gallery-scroll {
+        display: flex; gap: 1rem;
+        padding: 0 2.5rem;
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        scroll-snap-type: x mandatory;
+    }
+    .ws-gallery-scroll::-webkit-scrollbar { display: none; }
+    .ws-gallery-item {
+        flex: 0 0 220px; aspect-ratio: 1/1;
+        overflow: hidden; border-radius: 2px;
+        scroll-snap-align: start;
+    }
+    .ws-gallery-item img {
+        width: 100%; height: 100%; object-fit: cover;
+        transition: transform .5s ease;
+    }
+    .ws-gallery-item:hover img { transform: scale(1.08); }
+
+    /* 5 — booking CTA */
+    .ws-booking {
+        position: relative; overflow: hidden;
+        background: var(--dark);
+        padding: 6rem 2.5rem;
+        text-align: center;
+    }
+    .ws-booking::before {
+        content: '';
+        position: absolute; inset: 0;
+        background-image: url('items/13/WhatsApp%20Image%202026-03-08%20at%2016.28.32.jpeg');
+        background-size: cover; background-position: center;
+        opacity: .12;
+    }
+    .ws-booking-inner { position: relative; z-index: 1; }
+    .ws-booking h2 {
+        font-size: clamp(1.8rem, 4vw, 3.5rem);
+        font-weight: 300; color: white;
+        line-height: 1.15; margin-bottom: 1rem;
+    }
+    .ws-booking h2 strong { font-weight: 700; }
+    .ws-booking p {
+        color: rgba(255,255,255,.55); font-size: 1rem;
+        font-weight: 300; max-width: 480px;
+        margin: 0 auto 2.5rem; line-height: 1.9;
+    }
+    .ws-booking-btns {
+        display: flex; gap: 1rem;
+        justify-content: center; flex-wrap: wrap;
+    }
+
+    /* workshops mobile */
+    @media (max-width: 900px) {
+        .ws-cards-grid { grid-template-columns: 1fr; max-width: 480px; }
+        .ws-stats { grid-template-columns: repeat(2, 1fr); }
+        .ws-stat { border-left: none; border-top: 1px solid rgba(255,255,255,.07); }
+        .ws-stat:nth-child(-n+2) { border-top: none; }
+    }
+    @media (max-width: 600px) {
+        .ws-gallery-item { flex: 0 0 160px; }
     }
 
     /* ── PROCESS ── */
@@ -878,49 +1040,143 @@
 </div>
 
 <!-- WORKSHOPS -->
-<section class="workshops-section" id="workshops" aria-label="סדנאות">
-    <div class="workshops-inner">
-        <div class="workshops-left fade-in">
-            <p class="section-label">למדו ליצור</p>
-            <h2>סדנאות<br>בטון פולימרי</h2>
-            <p>הצטרפו לסדנאות היצירה שלנו וגלו את הקסם של עבודה עם בטון פולימרי. מתאים לכולם — גם ללא ניסיון קודם. בסיום הסדנה תקחו הביתה יצירה שיצרתם במו ידיכם.</p>
-            <a href="https://wa.me/972543775424?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%2F%D7%AA%20%D7%9C%D7%94%D7%A6%D7%98%D7%A8%D7%A3%20%D7%9C%D7%A1%D7%93%D7%A0%D7%AA%20%D7%91%D7%98%D7%95%D7%9F" target="_blank" class="btn-wa">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
-                הצטרפות לסדנה
-            </a>
+<div id="workshops" aria-label="סדנאות">
+
+    <!-- 1: Cinematic intro (Masterclass-style) -->
+    <section class="ws-hero fade-in">
+        <p class="section-label">למדו ליצור</p>
+        <h2>למדו ליצור<strong>עם הידיים שלכם</strong></h2>
+        <p>סדנאות בטון פולימרי בהנחיה אישית — מתאים לכולם, ללא ניסיון קודם. תצאו עם יצירה שלמה שעשיתם בעצמכם.</p>
+    </section>
+
+    <!-- 2: Workshop type cards (Airbnb Experiences-style) -->
+    <section class="ws-cards-section" aria-label="סוגי סדנאות">
+        <div class="ws-cards-grid">
+
+            <!-- Card 1 -->
+            <article class="ws-card fade-in">
+                <div class="ws-card-img">
+                    <img src="items/1/WhatsApp Image 2026-03-08 at 16.28.29.jpeg"
+                         alt="סדנת שולחן שבת — מעמדי נרות לוטוס">
+                    <div class="ws-card-img-overlay"></div>
+                    <div class="ws-card-img-label">
+                        <h3>סדנת שולחן שבת</h3>
+                        <span class="ws-level">למתחילים</span>
+                    </div>
+                </div>
+                <div class="ws-card-body">
+                    <div class="ws-tags">
+                        <span class="ws-tag">⏱ 3 שעות</span>
+                        <span class="ws-tag">👥 עד 6</span>
+                        <span class="ws-tag">🏠 מתחילים</span>
+                    </div>
+                    <p>יוצרים זוג מעמדי נרות שבת ומגש אובלי מבטון פולימרי — הסט המושלם לשולחן שבת שלכם.</p>
+                    <a href="https://wa.me/972543775424?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%2F%D7%AA%20%D7%9C%D7%A1%D7%93%D7%A0%D7%AA%20%D7%A9%D7%95%D7%9C%D7%97%D7%9F%20%D7%A9%D7%91%D7%AA" target="_blank" class="ws-card-cta">לפרטים ולהרשמה ←</a>
+                </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="ws-card fade-in" style="transition-delay:.1s">
+                <div class="ws-card-img">
+                    <img src="items/7/WhatsApp Image 2026-03-08 at 16.28.30.jpeg"
+                         alt="סדנת עיצוב הבית — ברכת הבית">
+                    <div class="ws-card-img-overlay"></div>
+                    <div class="ws-card-img-label">
+                        <h3>סדנת עיצוב הבית</h3>
+                        <span class="ws-level">למתחילים</span>
+                    </div>
+                </div>
+                <div class="ws-card-body">
+                    <div class="ws-tags">
+                        <span class="ws-tag">⏱ 3 שעות</span>
+                        <span class="ws-tag">👥 עד 8</span>
+                        <span class="ws-tag">🎁 מתנה מושלמת</span>
+                    </div>
+                    <p>יוצרים פריט עיצובי לבית — ברכת הבית, לוח קיר מחורט, מגש דקורטיבי או קערה. לפי הבחירה שלכם.</p>
+                    <a href="https://wa.me/972543775424?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%2F%D7%AA%20%D7%9C%D7%A1%D7%93%D7%A0%D7%AA%20%D7%A2%D7%99%D7%A6%D7%95%D7%91%20%D7%94%D7%91%D7%99%D7%AA" target="_blank" class="ws-card-cta">לפרטים ולהרשמה ←</a>
+                </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="ws-card fade-in" style="transition-delay:.2s">
+                <div class="ws-card-img">
+                    <img src="items/13/WhatsApp Image 2026-03-08 at 16.28.32.jpeg"
+                         alt="סדנת סט מלא — ראש השנה">
+                    <div class="ws-card-img-overlay"></div>
+                    <div class="ws-card-img-label">
+                        <h3>סדנת סט חג</h3>
+                        <span class="ws-level">מתקדמים</span>
+                    </div>
+                </div>
+                <div class="ws-card-body">
+                    <div class="ws-tags">
+                        <span class="ws-tag">⏱ 4 שעות</span>
+                        <span class="ws-tag">👥 עד 4</span>
+                        <span class="ws-tag">✨ מתקדמים</span>
+                    </div>
+                    <p>יוצרים סט חג שלם — מגש, מעמדי נרות ואגרטל. מושלם לראש השנה, חנוכה, או כמתנה ייחודית לחג.</p>
+                    <a href="https://wa.me/972543775424?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%2F%D7%AA%20%D7%9C%D7%A1%D7%93%D7%A0%D7%AA%20%D7%A1%D7%98%20%D7%97%D7%92" target="_blank" class="ws-card-cta">לפרטים ולהרשמה ←</a>
+                </div>
+            </article>
+
         </div>
-        <div class="workshops-right fade-in">
-            <div class="workshop-card">
-                <div class="workshop-icon">🏺</div>
-                <div>
-                    <h3>למתחילים ולמתקדמים</h3>
-                    <p>הסדנה מתאימה לכל רמה. אין צורך בניסיון קודם — רק רצון ליצור.</p>
-                </div>
-            </div>
-            <div class="workshop-card">
-                <div class="workshop-icon">✨</div>
-                <div>
-                    <h3>פריט שלוקחים הביתה</h3>
-                    <p>בסיום הסדנה יוצאים עם יצירה שלמה — מוכנה להיות חלק מהבית שלכם.</p>
-                </div>
-            </div>
-            <div class="workshop-card">
-                <div class="workshop-icon">👥</div>
-                <div>
-                    <h3>קבוצות קטנות</h3>
-                    <p>עד 8 משתתפים לסדנה — תשומת לב אישית ואווירה נעימה ואינטימית.</p>
-                </div>
-            </div>
-            <div class="workshop-card">
-                <div class="workshop-icon">🎁</div>
-                <div>
-                    <h3>מתנה מושלמת</h3>
-                    <p>סדנה לזוגות, לקבוצות חברים, לימי הולדת ולאירועי גיבוש.</p>
-                </div>
-            </div>
+    </section>
+
+    <!-- 3: Stats strip (Masterclass/Airbnb-style social proof) -->
+    <div class="ws-stats fade-in" aria-label="מספרים">
+        <div class="ws-stat">
+            <div class="ws-stat-num">50<span>+</span></div>
+            <div class="ws-stat-label">סדנאות שנערכו</div>
+        </div>
+        <div class="ws-stat">
+            <div class="ws-stat-num">200<span>+</span></div>
+            <div class="ws-stat-label">משתתפים מרוצים</div>
+        </div>
+        <div class="ws-stat">
+            <div class="ws-stat-num">★<span>4.9</span></div>
+            <div class="ws-stat-label">דירוג ממוצע</div>
+        </div>
+        <div class="ws-stat">
+            <div class="ws-stat-num">3–4</div>
+            <div class="ws-stat-label">שעות לסדנה</div>
         </div>
     </div>
-</section>
+
+    <!-- 4: "What you'll create" gallery -->
+    <section class="ws-gallery-section" aria-label="מה תיצרו">
+        <div class="ws-gallery-header">
+            <p class="section-label">מה תיצרו בסדנה</p>
+            <h2 class="section-title" style="font-size:clamp(1.5rem,3vw,2.4rem)">יצירות של משתתפים</h2>
+        </div>
+        <div class="ws-gallery-scroll" role="list" aria-label="גלריית יצירות">
+            <div class="ws-gallery-item" role="listitem"><img src="items/1/WhatsApp Image 2026-03-08 at 16.28.29.jpeg" alt="מעמדי נרות לוטוס" loading="lazy"></div>
+            <div class="ws-gallery-item" role="listitem"><img src="items/3/WhatsApp Image 2026-03-08 at 16.28.29.jpeg" alt="מעמדי נרות שלום שבת" loading="lazy"></div>
+            <div class="ws-gallery-item" role="listitem"><img src="items/6/WhatsApp Image 2026-03-08 at 16.28.31.jpeg" alt="מפת ארץ ישראל" loading="lazy"></div>
+            <div class="ws-gallery-item" role="listitem"><img src="items/7/WhatsApp Image 2026-03-08 at 16.28.30.jpeg" alt="ברכת הבית" loading="lazy"></div>
+            <div class="ws-gallery-item" role="listitem"><img src="items/4/WhatsApp Image 2026-03-08 at 16.28.30.jpeg" alt="סט שבת" loading="lazy"></div>
+            <div class="ws-gallery-item" role="listitem"><img src="items/12/WhatsApp Image 2026-03-08 at 16.28.32.jpeg" alt="קערה דקורטיבית" loading="lazy"></div>
+            <div class="ws-gallery-item" role="listitem"><img src="items/8/WhatsApp Image 2026-03-08 at 16.28.30.jpeg" alt="חנוכייה" loading="lazy"></div>
+            <div class="ws-gallery-item" role="listitem"><img src="items/13/WhatsApp Image 2026-03-08 at 16.28.32.jpeg" alt="סט ראש השנה" loading="lazy"></div>
+        </div>
+    </section>
+
+    <!-- 5: Booking CTA (dramatic close) -->
+    <section class="ws-booking fade-in" aria-label="הרשמה לסדנה">
+        <div class="ws-booking-inner">
+            <p class="section-label" style="color:var(--accent)">בואו ניצור ביחד</p>
+            <h2>מוכנים<strong>להתחיל ליצור?</strong></h2>
+            <p>צרו איתנו קשר ונתאים סדנה לפי הזמן, הקבוצה ורמת הניסיון שלכם. לזוגות, חברים, משפחות ואירועי גיבוש.</p>
+            <div class="ws-booking-btns">
+                <a href="https://wa.me/972543775424?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%2F%D7%AA%20%D7%9C%D7%A1%D7%93%D7%A0%D7%AA%20%D7%91%D7%98%D7%95%D7%9F%20%F0%9F%8F%BA" target="_blank" class="btn-wa">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
+                    שלחו הודעה בוואטסאפ
+                </a>
+                <a href="tel:+972543775424" class="btn-outline">📞 חייגו אלינו</a>
+            </div>
+        </div>
+    </section>
+
+</div>
 
 <!-- PROCESS -->
 <section class="process-section fade-in" aria-label="תהליך היצירה">
