@@ -4,890 +4,1039 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aisha Art Studio | עיצוב בית מבטון פולימרי</title>
+    <meta name="description" content="פריטי עיצוב בית ייחודיים מבטון פולימרי בעבודת יד. מעמדי נרות, חנוכיות, קערות דקורטיביות וסדנאות יצירה.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        :root {
-            --dark: #1e1c1a;
-            --mid: #3d3a36;
-            --accent: #b8956a;
-            --light-bg: #f7f5f2;
-            --white: #ffffff;
-            --text: #2d2b28;
-            --text-light: #7a776f;
-            --border: #e0dcd6;
-        }
+    :root {
+        --bg:           #F5F1EB;
+        --dark:         #16130F;
+        --mid:          #3A3530;
+        --accent:       #9C7A3C;
+        --accent-h:     #7A5F2A;
+        --text:         #1E1B17;
+        --muted:        #7D766D;
+        --border:       #DDD8CF;
+        --white:        #FDFAF6;
+        --cream:        #EDE8DF;
+        --green:        #25D366;
+        --blue:         #1a5fb4;
+    }
 
-        body {
-            font-family: 'Frank Ruhl Libre', serif;
-            background: var(--white);
-            color: var(--text);
-            direction: rtl;
-        }
+    html { scroll-behavior: smooth; font-size: 16px; }
 
-        /* ── HEADER ── */
-        header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: var(--dark);
-            color: white;
-            padding: 0 2rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 68px;
-        }
+    body {
+        font-family: 'Frank Ruhl Libre', serif;
+        background: var(--bg);
+        color: var(--text);
+        direction: rtl;
+        overflow-x: hidden;
+    }
 
-        .logo {
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: 1.35rem;
-            letter-spacing: 0.08em;
-            color: white;
-            text-decoration: none;
-        }
-        .logo span { color: var(--accent); }
+    img { display: block; max-width: 100%; }
 
-        nav { display: flex; gap: 2rem; }
-        nav a {
-            color: rgba(255,255,255,0.82);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.2s;
-        }
-        nav a:hover { color: var(--accent); }
+    *:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+        border-radius: 2px;
+    }
 
-        .header-right { display: flex; align-items: center; gap: 1rem; }
+    /* ── SKIP LINK ── */
+    .skip-link {
+        position: absolute; top: -100px; right: 0;
+        background: var(--accent); color: white;
+        padding: .75rem 1.5rem; font-size: 1rem; font-weight: 600;
+        border-radius: 0 0 6px 0; z-index: 9999;
+        text-decoration: none; transition: top .2s;
+    }
+    .skip-link:focus { top: 0; }
 
-        .wa-header-btn {
-            background: #25D366;
-            color: white;
-            padding: 0.45rem 1.1rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-size: 0.88rem;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            transition: background 0.2s;
-        }
-        .wa-header-btn:hover { background: #1ebe5d; }
+    /* ── HEADER ── */
+    header {
+        position: fixed; top: 0; inset-inline: 0;
+        z-index: 200;
+        padding: 0 2.5rem;
+        height: 72px;
+        display: flex; align-items: center; justify-content: space-between;
+        transition: background .4s, box-shadow .4s, backdrop-filter .4s;
+    }
+    header.hero-top {
+        background: transparent;
+    }
+    header.scrolled {
+        background: rgba(22,19,15,0.93);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 1px 0 rgba(255,255,255,.08);
+    }
 
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            background: none;
-            border: none;
-            padding: 4px;
-        }
-        .hamburger span { display: block; width: 24px; height: 2px; background: white; transition: 0.3s; }
+    .logo {
+        font-size: 1.25rem; font-weight: 300;
+        letter-spacing: .12em; color: white;
+        text-decoration: none; line-height: 1;
+    }
+    .logo strong { font-weight: 700; }
 
-        /* ── HERO ── */
-        .hero {
-            position: relative;
-            height: 88vh;
-            min-height: 520px;
-            background: var(--dark);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            overflow: hidden;
-        }
-        .hero-bg {
-            position: absolute;
-            inset: 0;
-            background-image: url('items/13/WhatsApp%20Image%202026-03-08%20at%2016.28.32.jpeg');
-            background-size: cover;
-            background-position: center;
-            opacity: 0.32;
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            color: white;
-            padding: 2rem;
-        }
-        .hero-tag {
-            font-size: 0.8rem;
-            letter-spacing: 0.22em;
-            color: var(--accent);
-            margin-bottom: 1.2rem;
-        }
-        .hero h1 {
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: clamp(2.6rem, 6vw, 5rem);
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 1.2rem;
-        }
-        .hero p {
-            font-size: 1.05rem;
-            color: rgba(255,255,255,0.78);
-            max-width: 520px;
-            margin: 0 auto 2.2rem;
-            line-height: 1.75;
-        }
-        .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    nav { display: flex; gap: 2.5rem; }
+    nav a {
+        color: rgba(255,255,255,.8); text-decoration: none;
+        font-size: .9rem; font-weight: 300; letter-spacing: .06em;
+        transition: color .2s; position: relative;
+    }
+    nav a::after {
+        content: ''; position: absolute; bottom: -3px;
+        right: 0; width: 0; height: 1px;
+        background: var(--accent); transition: width .25s;
+    }
+    nav a:hover { color: white; }
+    nav a:hover::after { width: 100%; }
 
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-            padding: 0.85rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background 0.2s, transform 0.2s;
-        }
-        .btn-primary:hover { background: #a07855; transform: translateY(-2px); }
+    .header-right { display: flex; align-items: center; gap: 1rem; }
 
-        .btn-outline {
-            border: 1.5px solid rgba(255,255,255,0.6);
-            color: white;
-            padding: 0.85rem 2rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-size: 1rem;
-            transition: border-color 0.2s, transform 0.2s;
-        }
-        .btn-outline:hover { border-color: white; transform: translateY(-2px); }
+    .wa-header-btn {
+        background: var(--green); color: white;
+        padding: .45rem 1.1rem; border-radius: 2rem;
+        text-decoration: none; font-size: .85rem; font-weight: 600;
+        display: flex; align-items: center; gap: .4rem;
+        transition: background .2s, transform .2s;
+    }
+    .wa-header-btn:hover { background: #1ebe5d; transform: translateY(-1px); }
 
-        /* ── ABOUT STRIP ── */
-        .about-strip {
-            background: var(--light-bg);
-            padding: 3.5rem 2rem;
-            text-align: center;
-        }
-        .about-strip h2 {
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: 1.7rem;
-            margin-bottom: 0.9rem;
-        }
-        .about-strip p {
-            color: var(--text-light);
-            max-width: 680px;
-            margin: 0 auto;
-            line-height: 1.85;
-            font-size: 1rem;
-        }
+    .hamburger {
+        display: none; flex-direction: column; gap: 5px;
+        cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+        display: block; width: 22px; height: 1.5px;
+        background: white; transition: .3s;
+    }
 
-        /* ── PRODUCTS ── */
-        .products-section { padding: 3rem 2rem 5rem; }
+    /* ── MOBILE NAV ── */
+    .mobile-nav {
+        display: none; position: fixed;
+        top: 72px; right: 0; left: 0; bottom: 0;
+        background: var(--dark);
+        flex-direction: column; align-items: center;
+        justify-content: center; gap: 2.5rem; z-index: 199;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+        color: rgba(255,255,255,.85); text-decoration: none;
+        font-size: 1.6rem; font-weight: 300; letter-spacing: .1em;
+        transition: color .2s;
+    }
+    .mobile-nav a:hover { color: var(--accent); }
 
-        .section-title {
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: 2rem;
-            text-align: center;
-            margin-bottom: 0.5rem;
-        }
-        .section-subtitle {
-            text-align: center;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            font-size: 0.93rem;
-        }
+    /* ── HERO ── */
+    .hero {
+        position: relative; height: 100vh; min-height: 600px;
+        display: flex; align-items: center; justify-content: center;
+        text-align: center; overflow: hidden;
+    }
+    .hero-bg {
+        position: absolute; inset: 0;
+        background-image: url('items/1/WhatsApp%20Image%202026-03-08%20at%2016.28.29.jpeg');
+        background-size: cover; background-position: center;
+        transform: scale(1.04);
+        transition: transform 8s ease-out;
+    }
+    .hero-bg::after {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(to bottom,
+            rgba(22,19,15,.55) 0%,
+            rgba(22,19,15,.45) 50%,
+            rgba(22,19,15,.75) 100%);
+    }
+    .hero-content {
+        position: relative; z-index: 1;
+        color: white; padding: 2rem; max-width: 860px;
+    }
+    .hero-eyebrow {
+        font-size: .72rem; letter-spacing: .3em;
+        color: var(--accent); font-weight: 400;
+        margin-bottom: 1.8rem;
+        text-transform: uppercase;
+    }
+    .hero h1 {
+        font-size: clamp(3rem, 8vw, 7rem);
+        font-weight: 300; line-height: 1.05;
+        margin-bottom: .5rem; letter-spacing: .02em;
+    }
+    .hero h1 em {
+        font-style: normal; font-weight: 700;
+        display: block;
+    }
+    .hero-sub {
+        font-size: 1rem; color: rgba(255,255,255,.7);
+        max-width: 460px; margin: 1.8rem auto 2.5rem;
+        line-height: 1.9; font-weight: 300;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-        .filter-bar {
-            display: flex;
-            gap: 0.65rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2.5rem;
-        }
-        .filter-btn {
-            border: 1.5px solid var(--border);
-            background: white;
-            color: var(--text);
-            padding: 0.5rem 1.3rem;
-            border-radius: 25px;
-            cursor: pointer;
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: all 0.2s;
-        }
-        .filter-btn:hover, .filter-btn.active {
-            background: var(--dark);
-            color: white;
-            border-color: var(--dark);
-        }
+    .btn-primary {
+        background: var(--accent); color: white;
+        padding: .85rem 2.2rem; border-radius: 2px;
+        text-decoration: none; font-size: .95rem; font-weight: 500;
+        letter-spacing: .04em;
+        transition: background .2s, transform .2s;
+    }
+    .btn-primary:hover { background: var(--accent-h); transform: translateY(-2px); }
 
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-            gap: 1.8rem;
-            max-width: 1280px;
-            margin: 0 auto;
-        }
+    .btn-outline {
+        border: 1px solid rgba(255,255,255,.5); color: white;
+        padding: .85rem 2.2rem; border-radius: 2px;
+        text-decoration: none; font-size: .95rem; font-weight: 300;
+        letter-spacing: .04em;
+        transition: border-color .2s, transform .2s;
+    }
+    .btn-outline:hover { border-color: white; transform: translateY(-2px); }
 
-        .product-card {
-            cursor: pointer;
-            border-radius: 8px;
-            overflow: hidden;
-            background: white;
-            border: 1px solid var(--border);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.11);
-        }
+    .hero-scroll {
+        position: absolute; bottom: 2.5rem; left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255,255,255,.45); font-size: .72rem;
+        letter-spacing: .25em; display: flex; flex-direction: column;
+        align-items: center; gap: .5rem; z-index: 1;
+    }
+    .hero-scroll::after {
+        content: '';
+        width: 1px; height: 40px;
+        background: linear-gradient(to bottom, rgba(255,255,255,.4), transparent);
+        animation: scrollPulse 2s infinite;
+    }
+    @keyframes scrollPulse {
+        0%,100% { opacity: .4; } 50% { opacity: 1; }
+    }
 
-        .product-img-wrap {
-            position: relative;
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-            background: var(--light-bg);
-        }
-        .product-img-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s;
-        }
-        .product-card:hover .product-img-wrap img { transform: scale(1.05); }
+    /* ── MARQUEE ── */
+    .marquee-strip {
+        background: var(--dark); color: white;
+        overflow: hidden; padding: .95rem 0;
+        border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .marquee-track {
+        display: flex; gap: 0; white-space: nowrap;
+        animation: marquee 22s linear infinite;
+        width: max-content;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    .marquee-item {
+        font-size: .78rem; letter-spacing: .25em; font-weight: 300;
+        color: rgba(255,255,255,.7); padding: 0 2.5rem;
+    }
+    .marquee-dot {
+        color: var(--accent); padding: 0 .5rem;
+    }
+    @keyframes marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+    }
 
-        .multi-badge {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            background: rgba(0,0,0,0.6);
-            color: white;
-            font-size: 0.73rem;
-            padding: 0.22rem 0.55rem;
-            border-radius: 20px;
-        }
+    /* ── FADE IN ── */
+    .fade-in {
+        opacity: 0; transform: translateY(28px);
+        transition: opacity .75s ease, transform .75s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        .product-info { padding: 1.1rem 1.2rem 1.3rem; }
-        .product-category {
-            font-size: 0.72rem;
-            color: var(--text-light);
-            letter-spacing: 0.1em;
-            margin-bottom: 0.35rem;
-        }
-        .product-name {
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: 1.08rem;
-            margin-bottom: 0.5rem;
-        }
-        .product-cta {
-            color: var(--accent);
-            font-size: 0.86rem;
-            font-weight: 600;
-        }
+    /* ── STORY SECTION ── */
+    .story-section {
+        display: grid; grid-template-columns: 1fr 1fr;
+        min-height: 600px;
+    }
+    .story-image {
+        position: relative; overflow: hidden; min-height: 480px;
+    }
+    .story-image img {
+        width: 100%; height: 100%; object-fit: cover;
+        transition: transform 8s ease;
+    }
+    .story-image:hover img { transform: scale(1.04); }
 
-        /* ── WORKSHOPS ── */
-        .workshops-section {
-            background: var(--dark);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-        .workshops-section .section-title { color: white; margin-bottom: 1rem; }
-        .workshops-section > p {
-            color: rgba(255,255,255,0.72);
-            max-width: 600px;
-            margin: 0 auto 2.5rem;
-            line-height: 1.8;
-        }
+    .story-text {
+        background: var(--white);
+        display: flex; flex-direction: column;
+        justify-content: center;
+        padding: 5rem 4rem;
+    }
+    .story-label {
+        font-size: .72rem; letter-spacing: .25em;
+        color: var(--accent); font-weight: 400;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+    }
+    .story-text h2 {
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        font-weight: 300; line-height: 1.25;
+        margin-bottom: 1.5rem; color: var(--dark);
+    }
+    .story-text p {
+        color: var(--muted); line-height: 2;
+        font-size: 1rem; font-weight: 300;
+        margin-bottom: 1rem;
+    }
+    .story-text p:last-of-type { margin-bottom: 2rem; }
+    .story-link {
+        display: inline-flex; align-items: center; gap: .6rem;
+        color: var(--accent); text-decoration: none;
+        font-size: .9rem; font-weight: 500; letter-spacing: .06em;
+        border-bottom: 1px solid var(--accent);
+        padding-bottom: .15rem;
+        width: fit-content;
+        transition: gap .2s;
+    }
+    .story-link:hover { gap: 1rem; }
 
-        .workshops-features {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            max-width: 860px;
-            margin: 0 auto 3rem;
-        }
-        .workshop-feature {
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            padding: 1.8rem 1.4rem;
-            flex: 1;
-            min-width: 190px;
-            max-width: 240px;
-        }
-        .workshop-feature .icon { font-size: 2rem; margin-bottom: 0.9rem; }
-        .workshop-feature h3 {
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: 1.05rem;
-            margin-bottom: 0.5rem;
-        }
-        .workshop-feature p { font-size: 0.86rem; color: rgba(255,255,255,0.58); }
+    /* ── PRODUCTS ── */
+    .products-section {
+        background: var(--bg);
+        padding: 6rem 2.5rem;
+    }
+    .section-header {
+        text-align: center; margin-bottom: 3.5rem;
+    }
+    .section-label {
+        font-size: .72rem; letter-spacing: .28em;
+        color: var(--accent); font-weight: 400;
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+    }
+    .section-title {
+        font-size: clamp(1.8rem, 3.5vw, 3rem);
+        font-weight: 300; color: var(--dark);
+        margin-bottom: .6rem;
+    }
+    .section-sub {
+        color: var(--muted); font-size: .95rem;
+        font-weight: 300;
+    }
 
-        .btn-wa {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: #25D366;
-            color: white;
-            padding: 1rem 2.4rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: 700;
-            transition: background 0.2s, transform 0.2s;
-        }
-        .btn-wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+    /* Filter */
+    .filter-bar {
+        display: flex; gap: .5rem; justify-content: center;
+        flex-wrap: wrap; margin-bottom: 3rem;
+    }
+    .filter-btn {
+        border: 1px solid var(--border);
+        background: transparent; color: var(--muted);
+        padding: .5rem 1.4rem; border-radius: 2px;
+        cursor: pointer;
+        font-family: 'Frank Ruhl Libre', serif;
+        font-size: .85rem; font-weight: 400;
+        letter-spacing: .06em;
+        transition: all .2s;
+    }
+    .filter-btn:hover { border-color: var(--text); color: var(--text); }
+    .filter-btn.active {
+        background: var(--dark); color: white; border-color: var(--dark);
+    }
 
-        /* ── CONTACT ── */
-        .contact-strip {
-            background: var(--light-bg);
-            padding: 4rem 2rem;
-            text-align: center;
-        }
-        .contact-strip h2 {
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: 1.8rem;
-            margin-bottom: 0.8rem;
-        }
-        .contact-strip > p { color: var(--text-light); margin-bottom: 2rem; }
+    /* Grid */
+    .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        max-width: 1320px; margin: 0 auto;
+    }
 
-        .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .contact-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: transform 0.2s;
-        }
-        .contact-link:hover { transform: translateY(-2px); }
-        .contact-link.phone { background: var(--dark); color: white; }
-        .contact-link.whatsapp { background: #25D366; color: white; }
-        .contact-link.catalog { background: #128C7E; color: white; }
+    /* Card */
+    .product-card {
+        background: var(--white); cursor: pointer;
+        overflow: hidden;
+        transition: transform .35s ease, box-shadow .35s ease;
+    }
+    .product-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 20px 48px rgba(22,19,15,.1);
+    }
 
-        /* ── FOOTER ── */
-        footer {
-            background: var(--dark);
-            color: rgba(255,255,255,0.45);
-            text-align: center;
-            padding: 1.8rem 2rem;
-            font-size: 0.84rem;
-        }
-        footer strong { color: rgba(255,255,255,0.8); }
+    .product-img-wrap {
+        position: relative; aspect-ratio: 1/1; overflow: hidden;
+        background: var(--cream);
+    }
+    .product-img-wrap img {
+        width: 100%; height: 100%; object-fit: cover;
+        transition: transform .6s ease;
+    }
+    .product-card:hover .product-img-wrap img { transform: scale(1.07); }
 
-        /* ── SKIP LINK ── */
-        .skip-link {
-            position: absolute;
-            top: -100px;
-            right: 0;
-            background: var(--accent);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            font-size: 1rem;
-            font-weight: 700;
-            border-radius: 0 0 6px 6px;
-            z-index: 9999;
-            text-decoration: none;
-            transition: top 0.2s;
-        }
-        .skip-link:focus { top: 0; }
+    .product-overlay {
+        position: absolute; inset: 0;
+        background: rgba(22,19,15,.38);
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0; transition: opacity .35s;
+    }
+    .product-card:hover .product-overlay { opacity: 1; }
+    .product-overlay span {
+        color: white; font-size: .8rem; font-weight: 400;
+        letter-spacing: .2em; border: 1px solid rgba(255,255,255,.7);
+        padding: .55rem 1.4rem;
+    }
 
-        /* ── ACCESSIBILITY PANEL ── */
-        .a11y-btn {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            z-index: 999;
-            background: #1a5fb4;
-            color: white;
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 18px rgba(26,95,180,0.45);
-            transition: transform 0.2s, background 0.2s;
-        }
-        .a11y-btn:hover, .a11y-btn:focus-visible {
-            transform: scale(1.1);
-            background: #1347a0;
-            outline: 3px solid #fff;
-            outline-offset: 2px;
-        }
+    .multi-badge {
+        position: absolute; bottom: 10px; left: 10px;
+        background: rgba(22,19,15,.6); color: white;
+        font-size: .7rem; padding: .2rem .55rem; border-radius: 2px;
+        letter-spacing: .06em;
+    }
 
-        .a11y-panel {
-            position: fixed;
-            bottom: 6.5rem;
-            right: 2rem;
-            z-index: 998;
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.2rem;
-            width: 230px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
-            display: none;
-            flex-direction: column;
-            gap: 0.6rem;
-        }
-        .a11y-panel.open { display: flex; }
+    .product-info { padding: 1.2rem 1.4rem 1.5rem; }
+    .product-cat {
+        font-size: .68rem; color: var(--accent);
+        letter-spacing: .2em; margin-bottom: .4rem;
+        text-transform: uppercase;
+    }
+    .product-name {
+        font-size: 1.05rem; font-weight: 400;
+        color: var(--dark); margin-bottom: .5rem; line-height: 1.3;
+    }
+    .product-cta {
+        font-size: .8rem; color: var(--muted); font-weight: 300;
+        display: flex; align-items: center; gap: .3rem;
+        transition: color .2s;
+    }
+    .product-card:hover .product-cta { color: var(--accent); }
 
-        .a11y-panel-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--dark);
-            border-bottom: 1px solid var(--border);
-            padding-bottom: 0.5rem;
-            margin-bottom: 0.2rem;
-            text-align: center;
-        }
+    /* ── EDITORIAL BLOCK ── */
+    .editorial-block {
+        position: relative; height: 560px; overflow: hidden;
+        display: flex; align-items: center;
+    }
+    .editorial-block-bg {
+        position: absolute; inset: 0;
+        background-image: url('items/13/WhatsApp%20Image%202026-03-08%20at%2016.28.32.jpeg');
+        background-size: cover; background-position: center;
+        transform: scale(1.03);
+        transition: transform 10s ease;
+    }
+    .editorial-block:hover .editorial-block-bg { transform: scale(1.06); }
+    .editorial-block-bg::after {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(to left,
+            rgba(22,19,15,.8) 0%,
+            rgba(22,19,15,.4) 55%,
+            rgba(22,19,15,.15) 100%);
+    }
+    .editorial-text {
+        position: relative; z-index: 1;
+        padding: 4rem 5rem; max-width: 580px;
+        margin-right: auto;
+        color: white;
+    }
+    .editorial-text .section-label { color: var(--accent); }
+    .editorial-text h2 {
+        font-size: clamp(1.8rem, 3.5vw, 3.2rem);
+        font-weight: 300; line-height: 1.2;
+        margin-bottom: 1.2rem;
+    }
+    .editorial-text p {
+        color: rgba(255,255,255,.7); line-height: 1.9;
+        font-size: .97rem; font-weight: 300;
+        margin-bottom: 2rem;
+    }
 
-        .a11y-option {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            background: var(--light-bg);
-            border: 1.5px solid var(--border);
-            border-radius: 8px;
-            padding: 0.55rem 0.8rem;
-            cursor: pointer;
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: 0.88rem;
-            color: var(--text);
-            text-align: right;
-            width: 100%;
-            transition: background 0.15s, border-color 0.15s;
-        }
-        .a11y-option:hover, .a11y-option:focus-visible {
-            background: #e8f0fc;
-            border-color: #1a5fb4;
-            outline: none;
-        }
-        .a11y-option.active {
-            background: #1a5fb4;
-            color: white;
-            border-color: #1a5fb4;
-        }
-        .a11y-option .icon { font-size: 1.1rem; flex-shrink: 0; }
+    /* ── WORKSHOPS ── */
+    .workshops-section {
+        background: var(--dark);
+        padding: 7rem 2.5rem;
+    }
+    .workshops-inner {
+        max-width: 1100px; margin: 0 auto;
+        display: grid; grid-template-columns: 1fr 1.4fr;
+        gap: 5rem; align-items: center;
+    }
+    .workshops-left .section-label { color: var(--accent); }
+    .workshops-left h2 {
+        font-size: clamp(1.8rem, 3vw, 3rem);
+        font-weight: 300; color: white;
+        line-height: 1.2; margin-bottom: 1.4rem;
+    }
+    .workshops-left p {
+        color: rgba(255,255,255,.6); line-height: 1.9;
+        font-size: .97rem; font-weight: 300; margin-bottom: 2.2rem;
+    }
+    .btn-wa {
+        display: inline-flex; align-items: center; gap: .6rem;
+        background: var(--green); color: white;
+        padding: .9rem 2rem; border-radius: 2px;
+        text-decoration: none; font-size: .95rem; font-weight: 600;
+        transition: background .2s, transform .2s;
+    }
+    .btn-wa:hover { background: #1ebe5d; transform: translateY(-2px); }
 
-        .a11y-stmt-link {
-            display: block;
-            text-align: center;
-            margin-top: 0.3rem;
-            font-size: 0.82rem;
-            color: #1a5fb4;
-            text-decoration: underline;
-            cursor: pointer;
-        }
-        .a11y-stmt-link:hover { color: #1347a0; }
+    .workshops-right {
+        display: flex; flex-direction: column; gap: 1.2rem;
+    }
+    .workshop-card {
+        border: 1px solid rgba(255,255,255,.1);
+        padding: 1.6rem 1.8rem;
+        display: flex; gap: 1.2rem; align-items: flex-start;
+        transition: border-color .2s, background .2s;
+    }
+    .workshop-card:hover {
+        border-color: rgba(156,122,60,.5);
+        background: rgba(156,122,60,.06);
+    }
+    .workshop-icon {
+        font-size: 1.6rem; flex-shrink: 0;
+        margin-top: .1rem;
+    }
+    .workshop-card h3 {
+        color: white; font-size: 1rem; font-weight: 500;
+        margin-bottom: .35rem;
+    }
+    .workshop-card p {
+        color: rgba(255,255,255,.5); font-size: .88rem;
+        font-weight: 300; line-height: 1.7;
+    }
 
-        /* ── HIGH CONTRAST MODE ── */
-        body.high-contrast {
-            --dark: #000000;
-            --light-bg: #000000;
-            --white: #000000;
-            --text: #ffffff;
-            --text-light: #ffffff;
-            --border: #ffffff;
-            --accent: #ffff00;
-            background: #000 !important;
-            color: #fff !important;
-        }
-        body.high-contrast header { background: #000; border-bottom: 2px solid #fff; }
-        body.high-contrast .product-card { background: #000; border-color: #fff; }
-        body.high-contrast .product-name,
-        body.high-contrast .product-category { color: #fff; }
-        body.high-contrast .filter-btn { background: #000; color: #fff; border-color: #fff; }
-        body.high-contrast .filter-btn.active { background: #ffff00; color: #000; }
-        body.high-contrast .about-strip,
-        body.high-contrast .contact-strip { background: #000; }
-        body.high-contrast a { color: #ffff00; }
+    /* ── PROCESS ── */
+    .process-section {
+        background: var(--white);
+        padding: 7rem 2.5rem;
+        text-align: center;
+    }
+    .process-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 3rem; max-width: 900px;
+        margin: 4rem auto 0;
+    }
+    .process-step { position: relative; }
+    .process-num {
+        font-size: 4rem; font-weight: 300; color: var(--border);
+        line-height: 1; margin-bottom: .8rem;
+    }
+    .process-step h3 {
+        font-size: 1.05rem; font-weight: 500;
+        color: var(--dark); margin-bottom: .6rem;
+    }
+    .process-step p {
+        color: var(--muted); font-size: .9rem; line-height: 1.8; font-weight: 300;
+    }
+    .process-step:not(:last-child)::after {
+        content: '←';
+        position: absolute; top: 1.8rem; left: -1.8rem;
+        color: var(--border); font-size: 1.2rem;
+    }
 
-        /* ── UNDERLINE LINKS ── */
-        body.underline-links a { text-decoration: underline !important; }
+    /* ── CONTACT ── */
+    .contact-section {
+        background: var(--cream);
+        padding: 6rem 2.5rem;
+        text-align: center;
+    }
+    .contact-section h2 {
+        font-size: clamp(1.6rem, 3vw, 2.8rem);
+        font-weight: 300; color: var(--dark);
+        margin-bottom: .8rem;
+    }
+    .contact-section > p {
+        color: var(--muted); font-weight: 300;
+        margin-bottom: 2.5rem; font-size: .97rem;
+    }
+    .contact-links {
+        display: flex; gap: .8rem;
+        justify-content: center; flex-wrap: wrap;
+    }
+    .contact-link {
+        display: inline-flex; align-items: center; gap: .5rem;
+        padding: .8rem 1.6rem; border-radius: 2px;
+        text-decoration: none; font-weight: 500;
+        font-size: .9rem; transition: transform .2s, opacity .2s;
+    }
+    .contact-link:hover { transform: translateY(-2px); opacity: .9; }
+    .contact-link.phone { background: var(--dark); color: white; }
+    .contact-link.whatsapp { background: var(--green); color: white; }
+    .contact-link.catalog { background: #128C7E; color: white; }
 
-        /* ── FOCUS VISIBLE ── */
-        *:focus-visible {
-            outline: 3px solid #1a5fb4;
-            outline-offset: 3px;
-            border-radius: 3px;
-        }
+    /* ── FOOTER ── */
+    footer {
+        background: var(--dark); color: rgba(255,255,255,.4);
+        padding: 4rem 2.5rem 2rem;
+    }
+    .footer-top {
+        display: grid; grid-template-columns: 2fr 1fr 1fr;
+        gap: 3rem; margin-bottom: 3rem;
+        padding-bottom: 3rem;
+        border-bottom: 1px solid rgba(255,255,255,.07);
+    }
+    .footer-brand .logo { font-size: 1.1rem; margin-bottom: 1rem; }
+    .footer-brand p {
+        font-size: .87rem; line-height: 1.8;
+        font-weight: 300; max-width: 280px;
+    }
+    .footer-col h4 {
+        color: rgba(255,255,255,.8); font-size: .75rem;
+        letter-spacing: .2em; font-weight: 400;
+        text-transform: uppercase;
+        margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .footer-col ul a {
+        color: rgba(255,255,255,.4); text-decoration: none;
+        font-size: .87rem; font-weight: 300;
+        transition: color .2s;
+    }
+    .footer-col ul a:hover { color: var(--accent); }
+    .footer-bottom {
+        display: flex; align-items: center; justify-content: space-between;
+        flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-bottom p { font-size: .8rem; }
+    .footer-bottom a {
+        color: rgba(255,255,255,.35); font-size: .8rem;
+        text-decoration: none; transition: color .2s;
+    }
+    .footer-bottom a:hover { color: rgba(255,255,255,.7); }
 
-        /* ── FLOATING WA ── */
-        .wa-float {
-            position: fixed;
-            bottom: 2rem;
-            left: 2rem;
-            z-index: 999;
-            background: #25D366;
-            color: white;
-            width: 58px;
-            height: 58px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            box-shadow: 0 4px 18px rgba(37,211,102,0.4);
-            transition: transform 0.2s;
-        }
-        .wa-float:hover { transform: scale(1.1); }
+    /* ── FLOATING WA ── */
+    .wa-float {
+        position: fixed; bottom: 2rem; left: 2rem;
+        z-index: 999; background: var(--green);
+        width: 56px; height: 56px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 4px 20px rgba(37,211,102,.4);
+        transition: transform .2s;
+    }
+    .wa-float:hover { transform: scale(1.1); }
 
-        /* ── LIGHTBOX ── */
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 1000;
-            background: rgba(0,0,0,0.93);
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-        .lightbox.open { display: flex; }
+    /* ── ACCESSIBILITY ── */
+    .a11y-btn {
+        position: fixed; bottom: 2rem; right: 2rem;
+        z-index: 999; background: var(--blue);
+        width: 56px; height: 56px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        border: none; cursor: pointer;
+        box-shadow: 0 4px 18px rgba(26,95,180,.45);
+        transition: transform .2s, background .2s;
+    }
+    .a11y-btn:hover, .a11y-btn:focus-visible {
+        transform: scale(1.1); background: #1347a0;
+        outline: 2px solid white; outline-offset: 2px;
+    }
+    .a11y-panel {
+        position: fixed; bottom: 6.5rem; right: 2rem;
+        z-index: 998; background: var(--white);
+        border: 1px solid var(--border); border-radius: 8px;
+        padding: 1.2rem; width: 220px;
+        box-shadow: 0 8px 32px rgba(0,0,0,.15);
+        display: none; flex-direction: column; gap: .55rem;
+    }
+    .a11y-panel.open { display: flex; }
+    .a11y-panel-title {
+        font-size: .82rem; font-weight: 700; color: var(--dark);
+        border-bottom: 1px solid var(--border);
+        padding-bottom: .5rem; margin-bottom: .2rem; text-align: center;
+        letter-spacing: .06em;
+    }
+    .a11y-option {
+        display: flex; align-items: center; gap: .6rem;
+        background: var(--bg); border: 1px solid var(--border);
+        border-radius: 4px; padding: .5rem .8rem;
+        cursor: pointer;
+        font-family: 'Frank Ruhl Libre', serif;
+        font-size: .85rem; color: var(--text);
+        width: 100%; transition: background .15s, border-color .15s;
+    }
+    .a11y-option:hover, .a11y-option:focus-visible {
+        background: #e8f0fc; border-color: var(--blue); outline: none;
+    }
+    .a11y-option.active { background: var(--blue); color: white; border-color: var(--blue); }
+    .a11y-stmt-link {
+        display: block; text-align: center; margin-top: .2rem;
+        font-size: .78rem; color: var(--blue); text-decoration: underline;
+    }
 
-        .lightbox-inner {
-            position: relative;
-            max-width: 900px;
-            width: 100%;
-            max-height: 95vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-y: auto;
-        }
+    /* High contrast */
+    body.high-contrast {
+        --bg: #000; --white: #000; --cream: #000;
+        --text: #fff; --muted: #fff; --border: #fff;
+        --dark: #000; --accent: #ffff00;
+        background: #000 !important; color: #fff !important;
+    }
+    body.high-contrast header { background: #000 !important; border-bottom: 2px solid #fff; }
+    body.high-contrast .product-card { background: #000; border: 1px solid #fff; }
+    body.high-contrast .story-text { background: #000; }
+    body.underline-links a { text-decoration: underline !important; }
 
-        .lightbox-close {
-            position: absolute;
-            top: -2.2rem;
-            left: 0;
-            color: white;
-            font-size: 1.8rem;
-            cursor: pointer;
-            background: none;
-            border: none;
-            line-height: 1;
-            opacity: 0.8;
-            transition: opacity 0.2s;
-        }
-        .lightbox-close:hover { opacity: 1; }
+    /* ── LIGHTBOX ── */
+    .lightbox {
+        display: none; position: fixed; inset: 0;
+        z-index: 1000; background: rgba(0,0,0,.94);
+        align-items: center; justify-content: center; padding: 1rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-inner {
+        position: relative; max-width: 900px; width: 100%;
+        max-height: 95vh; display: flex;
+        flex-direction: column; align-items: center; overflow-y: auto;
+    }
+    .lightbox-close {
+        position: absolute; top: -2.2rem; left: 0;
+        color: white; font-size: 1.6rem; cursor: pointer;
+        background: none; border: none; opacity: .7;
+        transition: opacity .2s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-media-wrap {
+        position: relative; width: 100%; background: #0d0d0d;
+        border-radius: 4px; overflow: hidden;
+        display: flex; align-items: center; justify-content: center;
+        min-height: 300px;
+    }
+    #lightboxMedia {
+        max-width: 100%; max-height: 65vh;
+        object-fit: contain; display: block;
+    }
+    .lb-nav-btn {
+        position: absolute; top: 50%; transform: translateY(-50%);
+        background: rgba(255,255,255,.12); border: none; color: white;
+        width: 40px; height: 40px; border-radius: 50%;
+        cursor: pointer; font-size: 1.2rem; line-height: 1;
+        transition: background .2s; z-index: 2;
+    }
+    .lb-nav-btn:hover { background: rgba(255,255,255,.28); }
+    .lb-prev { right: 12px; }
+    .lb-next { left: 12px; }
+    .lightbox-info {
+        color: white; text-align: center;
+        padding: 1rem 0 .5rem; width: 100%;
+    }
+    .lightbox-info h3 { font-size: 1.2rem; font-weight: 400; margin-bottom: .25rem; }
+    .lightbox-info p { color: rgba(255,255,255,.5); font-size: .87rem; }
+    .lightbox-thumbs {
+        display: flex; gap: .5rem; flex-wrap: wrap;
+        justify-content: center; padding: .6rem 0 .8rem;
+    }
+    .thumb {
+        width: 62px; height: 62px; border-radius: 3px;
+        overflow: hidden; cursor: pointer;
+        border: 2px solid transparent; transition: border-color .2s;
+        flex-shrink: 0; background: #222;
+    }
+    .thumb.active { border-color: var(--accent); }
+    .thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .thumb-video {
+        width: 100%; height: 100%; display: flex;
+        align-items: center; justify-content: center;
+        font-size: 1.3rem; color: white;
+    }
+    .lightbox-wa-btn {
+        background: var(--green); color: white;
+        padding: .7rem 1.8rem; border-radius: 2px;
+        text-decoration: none; font-weight: 600;
+        font-size: .9rem;
+        display: inline-flex; align-items: center; gap: .5rem;
+        margin-bottom: 1rem; transition: background .2s;
+    }
+    .lightbox-wa-btn:hover { background: #1ebe5d; }
 
-        .lightbox-media-wrap {
-            position: relative;
-            width: 100%;
-            background: #111;
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 300px;
-        }
-        #lightboxMedia {
-            max-width: 100%;
-            max-height: 65vh;
-            object-fit: contain;
-            display: block;
-        }
-
-        .lb-nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.15);
-            border: none;
-            color: white;
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.3rem;
-            line-height: 1;
-            transition: background 0.2s;
-            z-index: 2;
-        }
-        .lb-nav-btn:hover { background: rgba(255,255,255,0.3); }
-        .lb-prev { right: 12px; }
-        .lb-next { left: 12px; }
-
-        .lightbox-info {
-            color: white;
-            text-align: center;
-            padding: 1rem 0 0.5rem;
-            width: 100%;
-        }
-        .lightbox-info h3 {
-            font-family: 'Frank Ruhl Libre', serif;
-            font-size: 1.25rem;
-            margin-bottom: 0.3rem;
-        }
-        .lightbox-info p { color: rgba(255,255,255,0.58); font-size: 0.9rem; }
-
-        .lightbox-thumbs {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 0.6rem 0 0.8rem;
-        }
-        .thumb {
-            width: 65px;
-            height: 65px;
-            border-radius: 5px;
-            overflow: hidden;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: border-color 0.2s;
-            flex-shrink: 0;
-            background: #222;
-        }
-        .thumb.active { border-color: var(--accent); }
-        .thumb img { width: 100%; height: 100%; object-fit: cover; }
-        .thumb-video {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: white;
-        }
-
-        .lightbox-wa-btn {
-            background: #25D366;
-            color: white;
-            padding: 0.7rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.92rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-            transition: background 0.2s;
-        }
-        .lightbox-wa-btn:hover { background: #1ebe5d; }
-
-        /* ── MOBILE ── */
-        @media (max-width: 768px) {
-            nav { display: none; }
-            .hamburger { display: flex; }
-            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-            .hero { height: 72vh; }
-            .workshops-features { flex-direction: column; align-items: center; }
-            .workshop-feature { max-width: 100%; width: 100%; }
-        }
-        @media (max-width: 420px) {
-            .products-grid { grid-template-columns: 1fr; }
-        }
-
-        /* Mobile nav overlay */
-        .mobile-nav {
-            display: none;
-            position: absolute;
-            top: 68px;
-            right: 0; left: 0;
-            background: var(--dark);
-            padding: 1.2rem 2rem;
-            flex-direction: column;
-            gap: 1.2rem;
-            z-index: 99;
-        }
-        .mobile-nav.open { display: flex; }
-        .mobile-nav a {
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-            font-size: 1.05rem;
-            font-weight: 600;
-        }
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+        .story-section { grid-template-columns: 1fr; }
+        .story-image { min-height: 320px; }
+        .story-text { padding: 3rem 2rem; }
+        .workshops-inner { grid-template-columns: 1fr; gap: 3rem; }
+        .footer-top { grid-template-columns: 1fr 1fr; }
+        .footer-brand { grid-column: 1 / -1; }
+        .editorial-text { padding: 3rem 2rem; }
+        .process-grid { grid-template-columns: 1fr; gap: 2rem; }
+        .process-step::after { display: none !important; }
+    }
+    @media (max-width: 768px) {
+        nav { display: none; }
+        .hamburger { display: flex; }
+        .products-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        header { padding: 0 1.5rem; }
+        .products-section { padding: 4rem 1.5rem; }
+        .workshops-section { padding: 4rem 1.5rem; }
+        .footer-top { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 480px) {
+        .products-grid { grid-template-columns: 1fr; }
+        .hero-btns { flex-direction: column; align-items: center; }
+    }
     </style>
 </head>
 <body>
 
-<!-- SKIP LINK -->
 <a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
 
 <!-- HEADER -->
-<header role="banner">
-    <a class="logo" href="#top">Aisha <span>Art Studio</span></a>
-    <nav>
+<header id="site-header" class="hero-top" role="banner">
+    <a class="logo" href="#top"><strong>Aisha</strong> Art Studio</a>
+    <nav aria-label="ניווט ראשי">
         <a href="#products">מוצרים</a>
         <a href="#workshops">סדנאות</a>
         <a href="#contact">צור קשר</a>
     </nav>
     <div class="header-right">
-        <a class="wa-header-btn" href="https://wa.me/972543775424" target="_blank" rel="noopener">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
+        <a class="wa-header-btn" href="https://wa.me/972543775424" target="_blank" rel="noopener" aria-label="שלח הודעה בוואטסאפ">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
             וואטסאפ
         </a>
-        <button class="hamburger" onclick="toggleMobileNav()" aria-label="תפריט">
+        <button class="hamburger" onclick="toggleMobileNav()" aria-label="תפריט ניווט" aria-expanded="false" id="hamburgerBtn">
             <span></span><span></span><span></span>
         </button>
     </div>
 </header>
 
-<!-- MOBILE NAV -->
-<div class="mobile-nav" id="mobileNav">
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-label="תפריט ניווט נייד">
     <a href="#products" onclick="closeMobileNav()">מוצרים</a>
     <a href="#workshops" onclick="closeMobileNav()">סדנאות</a>
     <a href="#contact" onclick="closeMobileNav()">צור קשר</a>
+    <a href="accessibility.html" onclick="closeMobileNav()">נגישות</a>
 </div>
 
-<!-- HERO -->
 <main id="main-content">
+
+<!-- HERO -->
 <section class="hero" id="top" aria-label="כותרת ראשית">
-    <div class="hero-bg"></div>
+    <div class="hero-bg" id="heroBg"></div>
     <div class="hero-content">
-        <p class="hero-tag">עבודת יד &nbsp;·&nbsp; בטון פולימרי &nbsp;·&nbsp; עיצוב ייחודי</p>
-        <h1>Aisha Art Studio</h1>
-        <p>פריטי עיצוב בית מקוריים ומרהיבים, עשויים בטון פולימרי בעבודת יד. כל פריט הוא יצירה ייחודית שתשדרג את הבית שלך.</p>
+        <p class="hero-eyebrow">עבודת יד &nbsp;·&nbsp; בטון פולימרי &nbsp;·&nbsp; עיצוב ייחודי</p>
+        <h1>Aisha<em>Art Studio</em></h1>
+        <p class="hero-sub">יצירות בית מקוריות מבטון פולימרי. כל פריט נוצר בעבודת יד עם תשומת לב לכל פרט — שילוב של חומריות טבעית ואסתטיקה עכשווית.</p>
         <div class="hero-btns">
             <a href="#products" class="btn-primary">לצפייה בפריטים</a>
-            <a href="https://wa.me/972543775424" target="_blank" class="btn-outline">הזמנה בוואטסאפ</a>
+            <a href="https://wa.me/972543775424" target="_blank" rel="noopener" class="btn-outline">הזמנה בוואטסאפ</a>
         </div>
     </div>
+    <div class="hero-scroll" aria-hidden="true">גלול</div>
 </section>
 
-<!-- ABOUT -->
-<section class="about-strip">
-    <h2>אמנות מבטון לבית שלך</h2>
-    <p>
-        ב-Aisha Art Studio אנו יוצרים פריטי עיצוב בית ייחודיים מבטון פולימרי — חומר עמיד, אלגנטי ומודרני.
-        כל פריט מעוצב ומיוצר בעבודת יד עם תשומת לב לכל פרט,
-        ומשלב אסתטיקה עכשווית עם חומריות טבעית ואמיתית.
-    </p>
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+        <span class="marquee-item">בטון פולימרי</span><span class="marquee-dot">·</span>
+        <span class="marquee-item">עבודת יד</span><span class="marquee-dot">·</span>
+        <span class="marquee-item">עיצוב ייחודי</span><span class="marquee-dot">·</span>
+        <span class="marquee-item">נרות שבת</span><span class="marquee-dot">·</span>
+        <span class="marquee-item">סדנאות יצירה</span><span class="marquee-dot">·</span>
+        <span class="marquee-item">מתנות מיוחדות</span><span class="marquee-dot">·</span>
+        <span class="marquee-item">פריטי קיר</span><span class="marquee-dot">·</span>
+        <span class="marquee-item">חנוכיות</span><span class="marquee-dot">·</span>
+        <!-- duplicate for seamless loop -->
+        <span class="marquee-item">בטון פולימרי</span><span class="marquee-dot">·</span>
+        <span class="marquee-item">עבודת יד</span><span class="marquee-dot">·</span>
+        <span class="marquee-item">עיצוב ייחודי</span><span class="marquee-dot">·</span>
+        <span class="marquee-item">נרות שבת</span><span class="marquee-dot">·</span>
+        <span class="marquee-item">סדנאות יצירה</span><span class="marquee-dot">·</span>
+        <span class="marquee-item">מתנות מיוחדות</span><span class="marquee-dot">·</span>
+        <span class="marquee-item">פריטי קיר</span><span class="marquee-dot">·</span>
+        <span class="marquee-item">חנוכיות</span><span class="marquee-dot">·</span>
+    </div>
+</div>
+
+<!-- STORY -->
+<section class="story-section fade-in" aria-label="הסיפור שלנו">
+    <div class="story-image">
+        <img src="items/8/WhatsApp Image 2026-03-08 at 16.28.30.jpeg"
+             alt="חנוכייה מודרנית מבטון פולימרי בעבודת יד">
+    </div>
+    <div class="story-text">
+        <p class="story-label">הסיפור שלנו</p>
+        <h2>כשחומר פוגש<br>יצירתיות</h2>
+        <p>ב-Aisha Art Studio אנו מאמינים שכל בית ראוי לפריט אחד שמספר סיפור. הבטון הפולימרי שלנו אינו רק חומר — הוא בד ציור שדרכו אנחנו יוצרים פריטים שמשלבים פונקציה, יופי ואמנות.</p>
+        <p>כל פריט מעוצב ויוצר בעבודת יד, עם תשומת לב מלאה לטקסטורה, לפרופורציה ולגוון — כדי שיתאים בדיוק לאסתטיקה שלך.</p>
+        <a href="#products" class="story-link">לצפייה בכל הפריטים ←</a>
+    </div>
 </section>
 
 <!-- PRODUCTS -->
 <section class="products-section" id="products" aria-label="פריטים">
-    <h2 class="section-title">הפריטים שלנו</h2>
-    <p class="section-subtitle">לחץ על פריט לצפייה בכל התמונות ולהזמנה</p>
+    <div class="section-header fade-in">
+        <p class="section-label">האוסף שלנו</p>
+        <h2 class="section-title">הפריטים שלנו</h2>
+        <p class="section-sub">לחץ על פריט לצפייה בכל התמונות ולהזמנה</p>
+    </div>
 
-    <div class="filter-bar">
+    <div class="filter-bar fade-in" role="group" aria-label="סינון לפי קטגוריה">
         <button class="filter-btn active" data-filter="all">הכל</button>
         <button class="filter-btn" data-filter="נרות שבת">נרות שבת</button>
         <button class="filter-btn" data-filter="עיצוב הבית">עיצוב הבית</button>
         <button class="filter-btn" data-filter="סטים מיוחדים">סטים מיוחדים</button>
     </div>
 
-    <div class="products-grid" id="productsGrid"></div>
+    <div class="products-grid" id="productsGrid" role="list"></div>
 </section>
+
+<!-- EDITORIAL BLOCK -->
+<div class="editorial-block fade-in" aria-label="פריטים מיוחדים">
+    <div class="editorial-block-bg"></div>
+    <div class="editorial-text">
+        <p class="section-label">סטים מיוחדים</p>
+        <h2>פריטים שמספרים<br>סיפור</h2>
+        <p>הסטים שלנו מעוצבים כיצירה שלמה — מגש, מעמדי נרות ואגרטל שנוצרו יחד, שמראים ומרגישים כמו יחידה מושלמת.</p>
+        <a href="#products" class="btn-primary" onclick="filterCategory('סטים מיוחדים')">לצפייה בסטים</a>
+    </div>
+</div>
 
 <!-- WORKSHOPS -->
 <section class="workshops-section" id="workshops" aria-label="סדנאות">
-    <h2 class="section-title">סדנאות בטון פולימרי</h2>
-    <p>הצטרפו לסדנאות היצירה שלנו וגלו את הקסם של עבודה עם בטון פולימרי. מתאים לכולם — גם ללא ניסיון קודם!</p>
-    <div class="workshops-features">
-        <div class="workshop-feature">
-            <div class="icon">🏺</div>
-            <h3>למתחילים</h3>
-            <p>הסדנה מתאימה לכל רמה, ללא צורך בניסיון קודם</p>
+    <div class="workshops-inner">
+        <div class="workshops-left fade-in">
+            <p class="section-label">למדו ליצור</p>
+            <h2>סדנאות<br>בטון פולימרי</h2>
+            <p>הצטרפו לסדנאות היצירה שלנו וגלו את הקסם של עבודה עם בטון פולימרי. מתאים לכולם — גם ללא ניסיון קודם. בסיום הסדנה תקחו הביתה יצירה שיצרתם במו ידיכם.</p>
+            <a href="https://wa.me/972543775424?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%2F%D7%AA%20%D7%9C%D7%94%D7%A6%D7%98%D7%A8%D7%A3%20%D7%9C%D7%A1%D7%93%D7%A0%D7%AA%20%D7%91%D7%98%D7%95%D7%9F" target="_blank" class="btn-wa">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
+                הצטרפות לסדנה
+            </a>
         </div>
-        <div class="workshop-feature">
-            <div class="icon">✨</div>
-            <h3>פריט שלוקחים הביתה</h3>
-            <p>בסיום כל סדנה תקחו איתכם יצירה שלמה שיצרתם</p>
-        </div>
-        <div class="workshop-feature">
-            <div class="icon">👥</div>
-            <h3>קבוצות קטנות</h3>
-            <p>סדנאות בקבוצות קטנות לחוויה אישית ומיוחדת</p>
+        <div class="workshops-right fade-in">
+            <div class="workshop-card">
+                <div class="workshop-icon">🏺</div>
+                <div>
+                    <h3>למתחילים ולמתקדמים</h3>
+                    <p>הסדנה מתאימה לכל רמה. אין צורך בניסיון קודם — רק רצון ליצור.</p>
+                </div>
+            </div>
+            <div class="workshop-card">
+                <div class="workshop-icon">✨</div>
+                <div>
+                    <h3>פריט שלוקחים הביתה</h3>
+                    <p>בסיום הסדנה יוצאים עם יצירה שלמה — מוכנה להיות חלק מהבית שלכם.</p>
+                </div>
+            </div>
+            <div class="workshop-card">
+                <div class="workshop-icon">👥</div>
+                <div>
+                    <h3>קבוצות קטנות</h3>
+                    <p>עד 8 משתתפים לסדנה — תשומת לב אישית ואווירה נעימה ואינטימית.</p>
+                </div>
+            </div>
+            <div class="workshop-card">
+                <div class="workshop-icon">🎁</div>
+                <div>
+                    <h3>מתנה מושלמת</h3>
+                    <p>סדנה לזוגות, לקבוצות חברים, לימי הולדת ולאירועי גיבוש.</p>
+                </div>
+            </div>
         </div>
     </div>
-    <a href="https://wa.me/972543775424?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%2F%D7%AA%20%D7%9C%D7%94%D7%A6%D7%98%D7%A8%D7%A3%20%D7%9C%D7%A1%D7%93%D7%A0%D7%AA%20%D7%91%D7%98%D7%95%D7%9F%20%F0%9F%8F%BA" target="_blank" class="btn-wa">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
-        הצטרפות לסדנה בוואטסאפ
-    </a>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section fade-in" aria-label="תהליך היצירה">
+    <div class="section-header">
+        <p class="section-label">תהליך היצירה</p>
+        <h2 class="section-title">מהרעיון לפריט</h2>
+    </div>
+    <div class="process-grid">
+        <div class="process-step">
+            <div class="process-num">01</div>
+            <h3>עיצוב ותכנון</h3>
+            <p>כל פריט מתחיל בשרטוט ותכנון מדוקדק — טקסטורה, פרופורציה וצבע.</p>
+        </div>
+        <div class="process-step">
+            <div class="process-num">02</div>
+            <h3>יציקה בעבודת יד</h3>
+            <p>הבטון הפולימרי נמדד, מעורבב ונמזג לתבנית בדיוק מירבי.</p>
+        </div>
+        <div class="process-step">
+            <div class="process-num">03</div>
+            <h3>עיבוד ולטישה</h3>
+            <p>לאחר ייבוש, כל פריט מעובד, מלוטש ועובר בקרת איכות קפדנית.</p>
+        </div>
+    </div>
 </section>
 
 <!-- CONTACT -->
-<section class="contact-strip" id="contact" aria-label="צור קשר">
-    <h2>צור קשר</h2>
-    <p>לשאלות, הזמנות מיוחדות ומידע על סדנאות — אנחנו כאן!</p>
+<section class="contact-section" id="contact" aria-label="צור קשר">
+    <p class="section-label">דברו איתנו</p>
+    <h2>יצירת קשר</h2>
+    <p>לשאלות, הזמנות מיוחדות ומידע על סדנאות — אנחנו כאן בשבילכם.</p>
     <div class="contact-links">
-        <a href="tel:+972543775424" class="contact-link phone">📞 054-377-5424</a>
-        <a href="https://wa.me/972543775424" target="_blank" class="contact-link whatsapp">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
+        <a href="tel:+972543775424" class="contact-link phone">📞&nbsp; 054-377-5424</a>
+        <a href="https://wa.me/972543775424" target="_blank" rel="noopener" class="contact-link whatsapp">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
             וואטסאפ
         </a>
-        <a href="https://wa.me/c/972543775424" target="_blank" class="contact-link catalog">📋 קטלוג</a>
+        <a href="https://wa.me/c/972543775424" target="_blank" rel="noopener" class="contact-link catalog">📋&nbsp; קטלוג</a>
     </div>
 </section>
 
-<!-- FOOTER -->
 </main>
+
+<!-- FOOTER -->
 <footer role="contentinfo">
-    <p>© 2025 <strong>Aisha Art Studio</strong> &nbsp;·&nbsp; כל הזכויות שמורות &nbsp;·&nbsp; עיצוב בית מבטון פולימרי בעבודת יד</p>
+    <div class="footer-top">
+        <div class="footer-brand">
+            <a class="logo" href="#top"><strong>Aisha</strong> Art Studio</a>
+            <p>פריטי עיצוב בית מקוריים מבטון פולימרי, עשויים בעבודת יד. כל פריט הוא יצירה ייחודית שנוצרה עם אהבה ותשומת לב לכל פרט.</p>
+        </div>
+        <div class="footer-col">
+            <h4>ניווט</h4>
+            <ul>
+                <li><a href="#products">הפריטים שלנו</a></li>
+                <li><a href="#workshops">סדנאות</a></li>
+                <li><a href="#contact">צור קשר</a></li>
+                <li><a href="accessibility.html">הצהרת נגישות</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>קשר</h4>
+            <ul>
+                <li><a href="tel:+972543775424">054-377-5424</a></li>
+                <li><a href="https://wa.me/972543775424" target="_blank">וואטסאפ</a></li>
+                <li><a href="https://wa.me/c/972543775424" target="_blank">קטלוג</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 <strong style="color:rgba(255,255,255,.7)">Aisha Art Studio</strong> · כל הזכויות שמורות</p>
+        <a href="accessibility.html">הצהרת נגישות</a>
+    </div>
 </footer>
 
 <!-- ACCESSIBILITY PANEL -->
 <div class="a11y-panel" id="a11yPanel" role="dialog" aria-modal="false" aria-label="אפשרויות נגישות">
     <div class="a11y-panel-title">♿ נגישות</div>
-
-    <button class="a11y-option" id="btnFontUp" onclick="a11yFontSize(1)" aria-label="הגדל גודל גופן">
-        <span class="icon">A+</span> הגדל טקסט
-    </button>
-    <button class="a11y-option" id="btnFontDown" onclick="a11yFontSize(-1)" aria-label="הקטן גודל גופן">
-        <span class="icon">A-</span> הקטן טקסט
-    </button>
-    <button class="a11y-option" id="btnContrast" onclick="a11yToggle('high-contrast','btnContrast')" aria-pressed="false" aria-label="הפעל מצב ניגודיות גבוהה">
-        <span class="icon">◑</span> ניגודיות גבוהה
-    </button>
-    <button class="a11y-option" id="btnLinks" onclick="a11yToggle('underline-links','btnLinks')" aria-pressed="false" aria-label="הדגש קישורים">
-        <span class="icon">U̲</span> הדגש קישורים
-    </button>
-    <button class="a11y-option" id="btnReset" onclick="a11yReset()" aria-label="איפוס כל הגדרות הנגישות">
-        <span class="icon">↺</span> אפס הכל
-    </button>
+    <button class="a11y-option" id="btnFontUp" onclick="a11yFontSize(1)" aria-label="הגדל גופן">A+ &nbsp;הגדל טקסט</button>
+    <button class="a11y-option" id="btnFontDown" onclick="a11yFontSize(-1)" aria-label="הקטן גופן">A- &nbsp;הקטן טקסט</button>
+    <button class="a11y-option" id="btnContrast" onclick="a11yToggle('high-contrast','btnContrast')" aria-pressed="false">◑ &nbsp;ניגודיות גבוהה</button>
+    <button class="a11y-option" id="btnLinks" onclick="a11yToggle('underline-links','btnLinks')" aria-pressed="false">U̲ &nbsp;הדגש קישורים</button>
+    <button class="a11y-option" onclick="a11yReset()">↺ &nbsp;אפס הכל</button>
     <a href="accessibility.html" class="a11y-stmt-link" target="_blank">הצהרת נגישות</a>
 </div>
-
-<button class="a11y-btn" id="a11yToggleBtn"
-    onclick="toggleA11yPanel()"
-    aria-expanded="false"
-    aria-controls="a11yPanel"
-    aria-label="פתח תפריט נגישות"
-    title="נגישות">
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<button class="a11y-btn" id="a11yToggleBtn" onclick="toggleA11yPanel()"
+    aria-expanded="false" aria-controls="a11yPanel" aria-label="פתח תפריט נגישות" title="נגישות">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <circle cx="12" cy="4" r="1.5"/>
-        <path d="M12 7v5"/>
-        <path d="M8 9h8"/>
-        <path d="M10 14l-2 5"/>
-        <path d="M14 14l2 5"/>
+        <path d="M12 7v5"/><path d="M8 9h8"/>
+        <path d="M10 14l-2 5"/><path d="M14 14l2 5"/>
     </svg>
 </button>
 
 <!-- FLOATING WA -->
-<a href="https://wa.me/972543775424" class="wa-float" target="_blank" title="שלח הודעה בוואטסאפ">
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
+<a href="https://wa.me/972543775424" class="wa-float" target="_blank" rel="noopener" aria-label="שלח הודעה בוואטסאפ" title="וואטסאפ">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
 </a>
 
 <!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightboxBg(event)" role="dialog" aria-modal="true" aria-labelledby="lbName">
+<div class="lightbox" id="lightbox" onclick="closeLightboxBg(event)"
+     role="dialog" aria-modal="true" aria-labelledby="lbName">
     <div class="lightbox-inner">
         <button class="lightbox-close" onclick="closeLightbox()" aria-label="סגור">✕</button>
-
         <div class="lightbox-media-wrap">
             <button class="lb-nav-btn lb-prev" onclick="changeMedia(-1)" aria-label="תמונה קודמת">‹</button>
             <img id="lightboxMedia" src="" alt="">
             <button class="lb-nav-btn lb-next" onclick="changeMedia(1)" aria-label="תמונה הבאה">›</button>
         </div>
-
         <div class="lightbox-info">
             <h3 id="lbName"></h3>
             <p id="lbDesc"></p>
         </div>
-
-        <div class="lightbox-thumbs" id="lbThumbs"></div>
-
-        <a id="lbWaBtn" href="#" target="_blank" class="lightbox-wa-btn">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
+        <div class="lightbox-thumbs" id="lbThumbs" role="list" aria-label="תמונות נוספות"></div>
+        <a id="lbWaBtn" href="#" target="_blank" rel="noopener" class="lightbox-wa-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
             שאלי על פריט זה בוואטסאפ
         </a>
     </div>
@@ -897,172 +1046,80 @@
 const WA_BASE = 'https://wa.me/972543775424';
 
 const products = [
-    {
-        name: 'מעמדי נרות שבת – לוטוס',
-        desc: 'זוג מעמדי נרות שבת בצורת פרח לוטוס על מגש אובלי, עשויים בטון פולימרי',
-        category: 'נרות שבת',
-        media: [
-            'items/1/WhatsApp Image 2026-03-08 at 16.28.29.jpeg',
-            'items/1/WhatsApp Image 2026-03-08 at 16.28.29 (1).jpeg',
-            'items/1/WhatsApp Image 2026-03-08 at 16.28.31.jpeg'
-        ]
-    },
-    {
-        name: 'מעמדי נרות שבת – כדורי',
-        desc: 'זוג מעמדי נרות שבת בצורה כדורית מחורצת על מגש אובלי, עשויים בטון פולימרי',
-        category: 'נרות שבת',
-        media: [
-            'items/2/WhatsApp Image 2026-03-08 at 16.28.29.jpeg',
-            'items/2/WhatsApp Image 2026-03-08 at 16.28.29 (1).jpeg',
-            'items/2/WhatsApp Image 2026-03-08 at 16.28.29 (2).jpeg',
-            'items/2/WhatsApp Image 2026-03-08 at 16.28.31.jpeg'
-        ]
-    },
-    {
-        name: 'מעמדי נרות שבת שלום',
-        desc: 'זוג מעמדי נרות שבת בצורת כיפה עם כתובת "שלום שבת", על מגש אובלי',
-        category: 'נרות שבת',
-        media: [
-            'items/3/WhatsApp Image 2026-03-08 at 16.28.29.jpeg',
-            'items/3/WhatsApp Image 2026-03-08 at 16.28.30 (1).jpeg',
-            'items/3/WhatsApp Image 2026-03-08 at 16.28.30.jpeg'
-        ]
-    },
-    {
-        name: 'מעמדי נרות – פטרייה',
-        desc: 'זוג מעמדי נרות בצורת פטרייה מינימליסטית מבטון פולימרי',
-        category: 'נרות שבת',
-        media: ['items/WhatsApp Image 2026-03-08 at 16.28.31.jpeg']
-    },
-    {
-        name: 'מעמדי נרות – טבעת',
-        desc: 'זוג מעמדי נרות בצורת טבעת על מגש אובלי, עשויים בטון פולימרי',
-        category: 'נרות שבת',
-        media: ['items/WhatsApp Image 2026-03-08 at 16.28.31b.jpeg']
-    },
-    {
-        name: 'סט שבת – סרוג ואגרטל',
-        desc: 'סט שבת הכולל זוג מעמדי נרות בטקסטורת סריגה ואגרטל מחורץ על מגש אורגני',
-        category: 'סטים מיוחדים',
-        media: [
-            'items/4/WhatsApp Image 2026-03-08 at 16.28.30.jpeg',
-            'items/4/WhatsApp Image 2026-03-08 at 16.28.30 (1).jpeg'
-        ]
-    },
-    {
-        name: 'סט ראש השנה',
-        desc: 'סט ראש השנה הכולל לוח ברכה אורגני, זוג מעמדי נרות ואגרטל על מגש עגול',
-        category: 'סטים מיוחדים',
-        media: [
-            'items/13/WhatsApp Image 2026-03-08 at 16.28.32.jpeg',
-            'items/13/WhatsApp Image 2026-03-08 at 16.28.32 (1).jpeg',
-            'items/13/WhatsApp Image 2026-03-08 at 16.28.33.jpeg'
-        ]
-    },
-    {
-        name: 'מגש חלה לשבת',
-        desc: 'מגש חלה מעוצב מבטון פולימרי — שילוב מושלם של אלגנטיות ופונקציונליות לשולחן שבת',
-        category: 'עיצוב הבית',
-        media: [
-            'items/5/WhatsApp Image 2026-03-08 at 16.28.30.jpeg',
-            'items/5/WhatsApp Image 2026-03-08 at 16.28.30 (1).jpeg',
-            'items/5/WhatsApp Video 2026-03-08 at 16.28.33.mp4'
-        ]
-    },
-    {
-        name: 'מפת ארץ ישראל',
-        desc: 'פסל קיר בצורת מפת ארץ ישראל מבטון פולימרי עם סמל מזוזה — מתנה ייחודית לבית',
-        category: 'עיצוב הבית',
-        media: [
-            'items/6/WhatsApp Image 2026-03-08 at 16.28.31.jpeg',
-            'items/6/WhatsApp Image 2026-03-08 at 16.28.31 (1).jpeg',
-            'items/6/WhatsApp Image 2026-03-08 at 16.28.31 (2).jpeg',
-            'items/6/WhatsApp Image 2026-03-08 at 16.28.32.jpeg'
-        ]
-    },
-    {
-        name: 'ברכת הבית',
-        desc: 'לוח ברכת הבית מבטון פולימרי עם כיתוב בעברית — יצירת אמנות לתלייה בבית',
-        category: 'עיצוב הבית',
-        media: [
-            'items/7/WhatsApp Image 2026-03-08 at 16.28.30.jpeg',
-            'items/7/WhatsApp Image 2026-03-08 at 16.28.32.jpeg'
-        ]
-    },
-    {
-        name: 'חנוכייה מודרנית',
-        desc: 'חנוכייה מודרנית ומינימליסטית מבטון פולימרי בעיצוב קשתות — פריט עיצובי ייחודי לחג',
-        category: 'עיצוב הבית',
-        media: [
-            'items/8/WhatsApp Image 2026-03-08 at 16.28.30.jpeg',
-            'items/8/WhatsApp Image 2026-03-08 at 16.28.30 (1).jpeg',
-            'items/8/WhatsApp Image 2026-03-08 at 16.28.31.jpeg',
-            'items/8/WhatsApp Video 2026-03-08 at 16.28.33.mp4'
-        ]
-    },
-    {
-        name: 'קערת אש ביו-אתנול',
-        desc: 'קערת בטון פולימרי עם אבני נחל שחורות ולהבת ביו-אתנול — אלמנט עיצובי מרהיב',
-        category: 'עיצוב הבית',
-        media: [
-            'items/10/WhatsApp Image 2026-03-08 at 16.28.32.jpeg',
-            'items/10/WhatsApp Video 2026-03-08 at 16.28.33.mp4'
-        ]
-    },
-    {
-        name: 'קערה דקורטיבית',
-        desc: 'קערה דקורטיבית אורגנית מבטון פולימרי — אלמנט עיצובי עדין ומיוחד לכל חדר',
-        category: 'עיצוב הבית',
-        media: [
-            'items/12/WhatsApp Image 2026-03-08 at 16.28.32.jpeg',
-            'items/12/WhatsApp Image 2026-03-08 at 16.28.32 (1).jpeg',
-            'items/12/WhatsApp Image 2026-03-08 at 16.28.32 (2).jpeg'
-        ]
-    },
-    {
-        name: 'מגש בועות',
-        desc: 'מגש עגול עם שפה מעוצבת מבועות, בגוון טרצו — ייחודי ואלגנטי',
-        category: 'עיצוב הבית',
-        media: ['items/WhatsApp Image 2026-03-08 at 16.28.32c.jpeg']
-    },
-    {
-        name: 'שעון בטון',
-        desc: 'שעון שולחני מינימליסטי עשוי בטון פולימרי — פריט עיצוב תפקודי ואסתטי',
-        category: 'עיצוב הבית',
-        media: ['items/WhatsApp Image 2026-03-08 at 16.28.32d.jpeg']
-    },
-    {
-        name: 'מזמור לתודה',
-        desc: 'לוח עגול מבטון פולימרי עם מזמור לתודה מחורט — מתנה מיוחדת ועיצוב קיר ייחודי',
-        category: 'עיצוב הבית',
-        media: ['items/WhatsApp Image 2026-03-08 at 16.28.33e.jpeg']
-    }
+    { name:'מעמדי נרות שבת – לוטוס', desc:'זוג מעמדי נרות שבת בצורת פרח לוטוס על מגש אובלי', category:'נרות שבת',
+      media:['items/1/WhatsApp Image 2026-03-08 at 16.28.29.jpeg','items/1/WhatsApp Image 2026-03-08 at 16.28.29 (1).jpeg','items/1/WhatsApp Image 2026-03-08 at 16.28.31.jpeg'] },
+    { name:'מעמדי נרות שבת – כדורי', desc:'זוג מעמדי נרות שבת בצורה כדורית מחורצת על מגש אובלי', category:'נרות שבת',
+      media:['items/2/WhatsApp Image 2026-03-08 at 16.28.29.jpeg','items/2/WhatsApp Image 2026-03-08 at 16.28.29 (1).jpeg','items/2/WhatsApp Image 2026-03-08 at 16.28.29 (2).jpeg','items/2/WhatsApp Image 2026-03-08 at 16.28.31.jpeg'] },
+    { name:'מעמדי נרות שבת שלום', desc:'זוג מעמדי נרות שבת בצורת כיפה עם כתובת "שלום שבת" על מגש אובלי', category:'נרות שבת',
+      media:['items/3/WhatsApp Image 2026-03-08 at 16.28.29.jpeg','items/3/WhatsApp Image 2026-03-08 at 16.28.30 (1).jpeg','items/3/WhatsApp Image 2026-03-08 at 16.28.30.jpeg'] },
+    { name:'מעמדי נרות – פטרייה', desc:'זוג מעמדי נרות בצורת פטרייה מינימליסטית', category:'נרות שבת',
+      media:['items/WhatsApp Image 2026-03-08 at 16.28.31.jpeg'] },
+    { name:'מעמדי נרות – טבעת', desc:'זוג מעמדי נרות בצורת טבעת על מגש אובלי', category:'נרות שבת',
+      media:['items/WhatsApp Image 2026-03-08 at 16.28.31b.jpeg'] },
+    { name:'סט שבת – סרוג ואגרטל', desc:'סט שבת הכולל זוג מעמדי נרות בטקסטורת סריגה ואגרטל מחורץ על מגש אורגני', category:'סטים מיוחדים',
+      media:['items/4/WhatsApp Image 2026-03-08 at 16.28.30.jpeg','items/4/WhatsApp Image 2026-03-08 at 16.28.30 (1).jpeg'] },
+    { name:'סט ראש השנה', desc:'סט ראש השנה הכולל לוח ברכה אורגני, זוג מעמדי נרות ואגרטל על מגש עגול', category:'סטים מיוחדים',
+      media:['items/13/WhatsApp Image 2026-03-08 at 16.28.32.jpeg','items/13/WhatsApp Image 2026-03-08 at 16.28.32 (1).jpeg','items/13/WhatsApp Image 2026-03-08 at 16.28.33.jpeg'] },
+    { name:'מגש חלה לשבת', desc:'מגש חלה מעוצב מבטון פולימרי לשולחן שבת', category:'עיצוב הבית',
+      media:['items/5/WhatsApp Image 2026-03-08 at 16.28.30.jpeg','items/5/WhatsApp Image 2026-03-08 at 16.28.30 (1).jpeg','items/5/WhatsApp Video 2026-03-08 at 16.28.33.mp4'] },
+    { name:'מפת ארץ ישראל', desc:'פסל קיר בצורת מפת ארץ ישראל מבטון פולימרי עם סמל מזוזה', category:'עיצוב הבית',
+      media:['items/6/WhatsApp Image 2026-03-08 at 16.28.31.jpeg','items/6/WhatsApp Image 2026-03-08 at 16.28.31 (1).jpeg','items/6/WhatsApp Image 2026-03-08 at 16.28.31 (2).jpeg','items/6/WhatsApp Image 2026-03-08 at 16.28.32.jpeg'] },
+    { name:'ברכת הבית', desc:'לוח ברכת הבית מבטון פולימרי עם כיתוב בעברית', category:'עיצוב הבית',
+      media:['items/7/WhatsApp Image 2026-03-08 at 16.28.30.jpeg','items/7/WhatsApp Image 2026-03-08 at 16.28.32.jpeg'] },
+    { name:'חנוכייה מודרנית', desc:'חנוכייה מינימליסטית מבטון פולימרי בעיצוב קשתות', category:'עיצוב הבית',
+      media:['items/8/WhatsApp Image 2026-03-08 at 16.28.30.jpeg','items/8/WhatsApp Image 2026-03-08 at 16.28.30 (1).jpeg','items/8/WhatsApp Image 2026-03-08 at 16.28.31.jpeg','items/8/WhatsApp Video 2026-03-08 at 16.28.33.mp4'] },
+    { name:'קערת אש ביו-אתנול', desc:'קערת בטון עם אבני נחל שחורות ולהבת ביו-אתנול', category:'עיצוב הבית',
+      media:['items/10/WhatsApp Image 2026-03-08 at 16.28.32.jpeg','items/10/WhatsApp Video 2026-03-08 at 16.28.33.mp4'] },
+    { name:'קערה דקורטיבית', desc:'קערה דקורטיבית אורגנית מבטון פולימרי', category:'עיצוב הבית',
+      media:['items/12/WhatsApp Image 2026-03-08 at 16.28.32.jpeg','items/12/WhatsApp Image 2026-03-08 at 16.28.32 (1).jpeg','items/12/WhatsApp Image 2026-03-08 at 16.28.32 (2).jpeg'] },
+    { name:'מגש בועות', desc:'מגש עגול עם שפה מעוצבת מבועות בגוון טרצו', category:'עיצוב הבית',
+      media:['items/WhatsApp Image 2026-03-08 at 16.28.32c.jpeg'] },
+    { name:'שעון בטון', desc:'שעון שולחני מינימליסטי עשוי בטון פולימרי', category:'עיצוב הבית',
+      media:['items/WhatsApp Image 2026-03-08 at 16.28.32d.jpeg'] },
+    { name:'מזמור לתודה', desc:'לוח עגול מבטון פולימרי עם מזמור לתודה מחורט', category:'עיצוב הבית',
+      media:['items/WhatsApp Image 2026-03-08 at 16.28.33e.jpeg'] }
 ];
 
-let curProduct = null;
-let curIdx = 0;
+let curProduct = null, curIdx = 0;
+const isVid = s => s.toLowerCase().endsWith('.mp4');
 
-function isVid(src) { return src.toLowerCase().endsWith('.mp4'); }
-
+/* ── RENDER PRODUCTS ── */
 function renderProducts(filter) {
     const list = filter === 'all' ? products : products.filter(p => p.category === filter);
-    document.getElementById('productsGrid').innerHTML = list.map((p, i) => {
+    const grid = document.getElementById('productsGrid');
+    grid.innerHTML = list.map(p => {
         const ri = products.indexOf(p);
         const thumb = p.media.find(m => !isVid(m)) || '';
         const hasMulti = p.media.length > 1;
         const hasVid = p.media.some(isVid);
-        return `<div class="product-card" onclick="openLightbox(${ri})" onkeydown="if(event.key==='Enter'||event.key===' ')openLightbox(${ri})" tabindex="0" role="button" aria-label="צפה בפריט: ${p.name}">
+        return `<article class="product-card" role="listitem"
+            onclick="openLightbox(${ri})"
+            onkeydown="if(event.key==='Enter'||event.key===' ')openLightbox(${ri})"
+            tabindex="0"
+            aria-label="צפה בפריט: ${p.name}">
             <div class="product-img-wrap">
                 <img src="${thumb}" alt="${p.name}" loading="lazy">
-                ${hasMulti ? `<div class="multi-badge">${hasVid ? '▶' : '🖼'} ${p.media.length}</div>` : ''}
+                <div class="product-overlay"><span>צפייה בפריט</span></div>
+                ${hasMulti ? `<div class="multi-badge">${hasVid?'▶':'🖼'} ${p.media.length}</div>` : ''}
             </div>
             <div class="product-info">
-                <div class="product-category">${p.category}</div>
+                <div class="product-cat">${p.category}</div>
                 <div class="product-name">${p.name}</div>
                 <div class="product-cta">לפרטים ורכישה ←</div>
             </div>
-        </div>`;
+        </article>`;
     }).join('');
+
+    // staggered fade-in for cards
+    grid.querySelectorAll('.product-card').forEach((c, i) => {
+        c.style.opacity = '0';
+        c.style.transform = 'translateY(20px)';
+        c.style.transition = `opacity .5s ease ${i * 0.055}s, transform .5s ease ${i * 0.055}s`;
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            c.style.opacity = '1';
+            c.style.transform = 'translateY(0)';
+        }));
+    });
 }
 
 document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -1073,11 +1130,18 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
     });
 });
 
+function filterCategory(cat) {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.toggle('active', b.dataset.filter === cat);
+    });
+    renderProducts(cat);
+    document.getElementById('products').scrollIntoView({ behavior: 'smooth' });
+}
+
+/* ── LIGHTBOX ── */
 function openLightbox(idx) {
-    curProduct = products[idx];
-    curIdx = 0;
-    showMedia();
-    renderThumbs();
+    curProduct = products[idx]; curIdx = 0;
+    showMedia(); renderThumbs();
     document.getElementById('lbName').textContent = curProduct.name;
     document.getElementById('lbDesc').textContent = curProduct.desc;
     const msg = encodeURIComponent('היי! ראיתי את "' + curProduct.name + '" ורוצה לדעת יותר 🙏');
@@ -1086,83 +1150,62 @@ function openLightbox(idx) {
     document.body.style.overflow = 'hidden';
     updateNavVis();
 }
-
 function closeLightbox() {
     document.getElementById('lightbox').classList.remove('open');
     document.body.style.overflow = '';
-    const vid = document.getElementById('lightboxVideo');
-    if (vid) vid.pause();
+    const v = document.getElementById('lightboxVideo');
+    if (v) v.pause();
 }
-
 function closeLightboxBg(e) {
     if (e.target === document.getElementById('lightbox')) closeLightbox();
 }
-
 function showMedia() {
     const src = curProduct.media[curIdx];
     const wrap = document.querySelector('.lightbox-media-wrap');
-    const existing = document.getElementById('lightboxMedia') || document.getElementById('lightboxVideo');
-
     if (isVid(src)) {
         let vid = document.getElementById('lightboxVideo');
         const img = document.getElementById('lightboxMedia');
         if (img) img.style.display = 'none';
         if (!vid) {
             vid = document.createElement('video');
-            vid.id = 'lightboxVideo';
-            vid.controls = true;
-            vid.style.maxWidth = '100%';
-            vid.style.maxHeight = '65vh';
+            vid.id = 'lightboxVideo'; vid.controls = true;
+            vid.style.cssText = 'max-width:100%;max-height:65vh';
             wrap.insertBefore(vid, wrap.querySelector('.lb-next'));
         }
-        vid.src = src;
-        vid.style.display = 'block';
-        vid.play();
+        vid.src = src; vid.style.display = 'block'; vid.play();
     } else {
         const vid = document.getElementById('lightboxVideo');
         if (vid) { vid.pause(); vid.style.display = 'none'; }
         const img = document.getElementById('lightboxMedia');
-        img.src = src;
-        img.style.display = 'block';
+        img.src = src; img.alt = curProduct.name; img.style.display = 'block';
     }
-
-    document.querySelectorAll('.thumb').forEach((t, i) => {
-        t.classList.toggle('active', i === curIdx);
-    });
+    document.querySelectorAll('.thumb').forEach((t,i) => t.classList.toggle('active', i === curIdx));
 }
-
 function renderThumbs() {
-    document.getElementById('lbThumbs').innerHTML = curProduct.media.map((src, i) =>
-        `<div class="thumb ${i === curIdx ? 'active' : ''}" onclick="setMedia(${i})">
-            ${isVid(src)
-                ? '<div class="thumb-video">▶</div>'
-                : `<img src="${src}" alt="">`}
+    document.getElementById('lbThumbs').innerHTML = curProduct.media.map((src,i) =>
+        `<div class="thumb ${i===curIdx?'active':''}" onclick="setMedia(${i})" role="listitem"
+             tabindex="0" onkeydown="if(event.key==='Enter')setMedia(${i})"
+             aria-label="תמונה ${i+1}">
+            ${isVid(src) ? '<div class="thumb-video">▶</div>' : `<img src="${src}" alt="">`}
         </div>`
     ).join('');
 }
-
 function setMedia(i) {
-    const vid = document.getElementById('lightboxVideo');
-    if (vid) vid.pause();
-    curIdx = i;
-    showMedia();
-    document.querySelectorAll('.thumb').forEach((t, j) => t.classList.toggle('active', j === i));
+    const v = document.getElementById('lightboxVideo'); if (v) v.pause();
+    curIdx = i; showMedia();
+    document.querySelectorAll('.thumb').forEach((t,j) => t.classList.toggle('active', j===i));
 }
-
 function changeMedia(dir) {
-    const vid = document.getElementById('lightboxVideo');
-    if (vid) vid.pause();
+    const v = document.getElementById('lightboxVideo'); if (v) v.pause();
     curIdx = (curIdx + dir + curProduct.media.length) % curProduct.media.length;
     showMedia();
-    document.querySelectorAll('.thumb').forEach((t, j) => t.classList.toggle('active', j === curIdx));
+    document.querySelectorAll('.thumb').forEach((t,j) => t.classList.toggle('active', j===curIdx));
 }
-
 function updateNavVis() {
     const show = curProduct && curProduct.media.length > 1;
     document.querySelector('.lb-prev').style.display = show ? '' : 'none';
     document.querySelector('.lb-next').style.display = show ? '' : 'none';
 }
-
 document.addEventListener('keydown', e => {
     if (!document.getElementById('lightbox').classList.contains('open')) return;
     if (e.key === 'Escape') closeLightbox();
@@ -1170,97 +1213,112 @@ document.addEventListener('keydown', e => {
     if (e.key === 'ArrowRight') changeMedia(-1);
 });
 
+/* ── MOBILE NAV ── */
 function toggleMobileNav() {
-    document.getElementById('mobileNav').classList.toggle('open');
+    const nav = document.getElementById('mobileNav');
+    const btn = document.getElementById('hamburgerBtn');
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    document.body.style.overflow = open ? 'hidden' : '';
 }
 function closeMobileNav() {
     document.getElementById('mobileNav').classList.remove('open');
+    document.getElementById('hamburgerBtn').setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
 }
 
-renderProducts('all');
+/* ── HEADER SCROLL ── */
+window.addEventListener('scroll', () => {
+    const h = document.getElementById('site-header');
+    if (window.scrollY > 60) { h.classList.remove('hero-top'); h.classList.add('scrolled'); }
+    else { h.classList.add('hero-top'); h.classList.remove('scrolled'); }
+}, { passive: true });
+
+/* ── HERO BG PARALLAX ── */
+window.addEventListener('scroll', () => {
+    const bg = document.getElementById('heroBg');
+    if (bg) bg.style.transform = `translateY(${window.scrollY * 0.25}px)`;
+}, { passive: true });
+
+/* ── FADE IN ON SCROLL ── */
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(el => { if (el.isIntersecting) el.target.classList.add('visible'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
 /* ── ACCESSIBILITY ── */
 let fontLevel = 0;
-
 function toggleA11yPanel() {
-    const panel = document.getElementById('a11yPanel');
-    const btn = document.getElementById('a11yToggleBtn');
-    const isOpen = panel.classList.toggle('open');
-    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    btn.setAttribute('aria-label', isOpen ? 'סגור תפריט נגישות' : 'פתח תפריט נגישות');
-    if (isOpen) {
-        // Focus first option for keyboard users
-        panel.querySelector('.a11y-option').focus();
-    }
+    const p = document.getElementById('a11yPanel');
+    const b = document.getElementById('a11yToggleBtn');
+    const open = p.classList.toggle('open');
+    b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) p.querySelector('.a11y-option').focus();
 }
-
-function a11yToggle(cls, btnId) {
-    const active = document.body.classList.toggle(cls);
-    const btn = document.getElementById(btnId);
-    btn.classList.toggle('active', active);
-    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
-    saveA11yState();
+function a11yToggle(cls, id) {
+    const a = document.body.classList.toggle(cls);
+    const el = document.getElementById(id);
+    el.classList.toggle('active', a);
+    el.setAttribute('aria-pressed', a ? 'true' : 'false');
+    saveA11y();
 }
-
 function a11yFontSize(dir) {
     fontLevel = Math.max(-2, Math.min(4, fontLevel + dir));
     document.documentElement.style.fontSize = (100 + fontLevel * 12.5) + '%';
     document.getElementById('btnFontUp').classList.toggle('active', fontLevel > 0);
     document.getElementById('btnFontDown').classList.toggle('active', fontLevel < 0);
-    saveA11yState();
+    saveA11y();
 }
-
 function a11yReset() {
     fontLevel = 0;
     document.documentElement.style.fontSize = '';
-    document.body.classList.remove('high-contrast', 'underline-links');
+    document.body.classList.remove('high-contrast','underline-links');
     ['btnContrast','btnLinks','btnFontUp','btnFontDown'].forEach(id => {
         const el = document.getElementById(id);
         el.classList.remove('active');
-        el.setAttribute('aria-pressed', 'false');
+        el.setAttribute('aria-pressed','false');
     });
-    localStorage.removeItem('a11yState');
+    localStorage.removeItem('a11y');
 }
-
-function saveA11yState() {
-    localStorage.setItem('a11yState', JSON.stringify({
-        fontLevel,
-        highContrast: document.body.classList.contains('high-contrast'),
-        underlineLinks: document.body.classList.contains('underline-links')
+function saveA11y() {
+    localStorage.setItem('a11y', JSON.stringify({
+        fl: fontLevel,
+        hc: document.body.classList.contains('high-contrast'),
+        ul: document.body.classList.contains('underline-links')
     }));
 }
-
-function loadA11yState() {
+(function loadA11y() {
     try {
-        const s = JSON.parse(localStorage.getItem('a11yState') || 'null');
+        const s = JSON.parse(localStorage.getItem('a11y') || 'null');
         if (!s) return;
-        if (s.fontLevel) { fontLevel = s.fontLevel - 1; a11yFontSize(1); }
-        if (s.highContrast) a11yToggle('high-contrast', 'btnContrast');
-        if (s.underlineLinks) a11yToggle('underline-links', 'btnLinks');
+        if (s.fl) { fontLevel = s.fl - 1; a11yFontSize(1); }
+        if (s.hc) a11yToggle('high-contrast','btnContrast');
+        if (s.ul) a11yToggle('underline-links','btnLinks');
     } catch(e) {}
-}
-
-// Close panel on outside click
+})();
 document.addEventListener('click', e => {
-    const panel = document.getElementById('a11yPanel');
-    const btn = document.getElementById('a11yToggleBtn');
-    if (panel.classList.contains('open') && !panel.contains(e.target) && e.target !== btn) {
-        panel.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-        btn.setAttribute('aria-label', 'פתח תפריט נגישות');
+    const p = document.getElementById('a11yPanel');
+    const b = document.getElementById('a11yToggleBtn');
+    if (p.classList.contains('open') && !p.contains(e.target) && e.target !== b) {
+        p.classList.remove('open');
+        b.setAttribute('aria-expanded','false');
     }
 });
-
-// Close panel on Escape
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && document.getElementById('a11yPanel').classList.contains('open')) {
         document.getElementById('a11yPanel').classList.remove('open');
-        document.getElementById('a11yToggleBtn').setAttribute('aria-expanded', 'false');
         document.getElementById('a11yToggleBtn').focus();
     }
 });
 
-loadA11yState();
+/* ── INIT ── */
+renderProducts('all');
+
+// Animate hero bg on load
+window.addEventListener('load', () => {
+    const bg = document.getElementById('heroBg');
+    if (bg) bg.style.transform = 'scale(1)';
+});
 </script>
 </body>
 </html>
