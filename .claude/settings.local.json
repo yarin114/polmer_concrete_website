@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:suri.co.il)"
+      "WebFetch(domain:suri.co.il)",
+      "Skill(keybindings-help)"
     ]
   }
 }
