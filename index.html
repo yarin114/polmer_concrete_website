@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aisha Art Studio | עיצוב בית מבטון פולימרי</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --dark: #1e1c1a;
+            --mid: #3d3a36;
+            --accent: #b8956a;
+            --light-bg: #f7f5f2;
+            --white: #ffffff;
+            --text: #2d2b28;
+            --text-light: #7a776f;
+            --border: #e0dcd6;
+        }
+
+        body {
+            font-family: 'Frank Ruhl Libre', serif;
+            background: var(--white);
+            color: var(--text);
+            direction: rtl;
+        }
+
+        /* ── HEADER ── */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: var(--dark);
+            color: white;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 68px;
+        }
+
+        .logo {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 1.35rem;
+            letter-spacing: 0.08em;
+            color: white;
+            text-decoration: none;
+        }
+        .logo span { color: var(--accent); }
+
+        nav { display: flex; gap: 2rem; }
+        nav a {
+            color: rgba(255,255,255,0.82);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+        nav a:hover { color: var(--accent); }
+
+        .header-right { display: flex; align-items: center; gap: 1rem; }
+
+        .wa-header-btn {
+            background: #25D366;
+            color: white;
+            padding: 0.45rem 1.1rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: background 0.2s;
+        }
+        .wa-header-btn:hover { background: #1ebe5d; }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 4px;
+        }
+        .hamburger span { display: block; width: 24px; height: 2px; background: white; transition: 0.3s; }
+
+        /* ── HERO ── */
+        .hero {
+            position: relative;
+            height: 88vh;
+            min-height: 520px;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('items/13/WhatsApp%20Image%202026-03-08%20at%2016.28.32.jpeg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.32;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            padding: 2rem;
+        }
+        .hero-tag {
+            font-size: 0.8rem;
+            letter-spacing: 0.22em;
+            color: var(--accent);
+            margin-bottom: 1.2rem;
+        }
+        .hero h1 {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: clamp(2.6rem, 6vw, 5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+        }
+        .hero p {
+            font-size: 1.05rem;
+            color: rgba(255,255,255,0.78);
+            max-width: 520px;
+            margin: 0 auto 2.2rem;
+            line-height: 1.75;
+        }
+        .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-primary:hover { background: #a07855; transform: translateY(-2px); }
+
+        .btn-outline {
+            border: 1.5px solid rgba(255,255,255,0.6);
+            color: white;
+            padding: 0.85rem 2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .btn-outline:hover { border-color: white; transform: translateY(-2px); }
+
+        /* ── ABOUT STRIP ── */
+        .about-strip {
+            background: var(--light-bg);
+            padding: 3.5rem 2rem;
+            text-align: center;
+        }
+        .about-strip h2 {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 1.7rem;
+            margin-bottom: 0.9rem;
+        }
+        .about-strip p {
+            color: var(--text-light);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.85;
+            font-size: 1rem;
+        }
+
+        /* ── PRODUCTS ── */
+        .products-section { padding: 3rem 2rem 5rem; }
+
+        .section-title {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            font-size: 0.93rem;
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 0.65rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+        .filter-btn {
+            border: 1.5px solid var(--border);
+            background: white;
+            color: var(--text);
+            padding: 0.5rem 1.3rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--dark);
+            color: white;
+            border-color: var(--dark);
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 1.8rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            cursor: pointer;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            border: 1px solid var(--border);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .product-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.11);
+        }
+
+        .product-img-wrap {
+            position: relative;
+            aspect-ratio: 1 / 1;
+            overflow: hidden;
+            background: var(--light-bg);
+        }
+        .product-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s;
+        }
+        .product-card:hover .product-img-wrap img { transform: scale(1.05); }
+
+        .multi-badge {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            font-size: 0.73rem;
+            padding: 0.22rem 0.55rem;
+            border-radius: 20px;
+        }
+
+        .product-info { padding: 1.1rem 1.2rem 1.3rem; }
+        .product-category {
+            font-size: 0.72rem;
+            color: var(--text-light);
+            letter-spacing: 0.1em;
+            margin-bottom: 0.35rem;
+        }
+        .product-name {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 1.08rem;
+            margin-bottom: 0.5rem;
+        }
+        .product-cta {
+            color: var(--accent);
+            font-size: 0.86rem;
+            font-weight: 600;
+        }
+
+        /* ── WORKSHOPS ── */
+        .workshops-section {
+            background: var(--dark);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+        .workshops-section .section-title { color: white; margin-bottom: 1rem; }
+        .workshops-section > p {
+            color: rgba(255,255,255,0.72);
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .workshops-features {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 860px;
+            margin: 0 auto 3rem;
+        }
+        .workshop-feature {
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 1.8rem 1.4rem;
+            flex: 1;
+            min-width: 190px;
+            max-width: 240px;
+        }
+        .workshop-feature .icon { font-size: 2rem; margin-bottom: 0.9rem; }
+        .workshop-feature h3 {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 1.05rem;
+            margin-bottom: 0.5rem;
+        }
+        .workshop-feature p { font-size: 0.86rem; color: rgba(255,255,255,0.58); }
+
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #25D366;
+            color: white;
+            padding: 1rem 2.4rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 700;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-wa:hover { background: #1ebe5d; transform: translateY(-2px); }
+
+        /* ── CONTACT ── */
+        .contact-strip {
+            background: var(--light-bg);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .contact-strip h2 {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+        .contact-strip > p { color: var(--text-light); margin-bottom: 2rem; }
+
+        .contact-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: transform 0.2s;
+        }
+        .contact-link:hover { transform: translateY(-2px); }
+        .contact-link.phone { background: var(--dark); color: white; }
+        .contact-link.whatsapp { background: #25D366; color: white; }
+        .contact-link.catalog { background: #128C7E; color: white; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.45);
+            text-align: center;
+            padding: 1.8rem 2rem;
+            font-size: 0.84rem;
+        }
+        footer strong { color: rgba(255,255,255,0.8); }
+
+        /* ── SKIP LINK ── */
+        .skip-link {
+            position: absolute;
+            top: -100px;
+            right: 0;
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 0 0 6px 6px;
+            z-index: 9999;
+            text-decoration: none;
+            transition: top 0.2s;
+        }
+        .skip-link:focus { top: 0; }
+
+        /* ── ACCESSIBILITY PANEL ── */
+        .a11y-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            background: #1a5fb4;
+            color: white;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 18px rgba(26,95,180,0.45);
+            transition: transform 0.2s, background 0.2s;
+        }
+        .a11y-btn:hover, .a11y-btn:focus-visible {
+            transform: scale(1.1);
+            background: #1347a0;
+            outline: 3px solid #fff;
+            outline-offset: 2px;
+        }
+
+        .a11y-panel {
+            position: fixed;
+            bottom: 6.5rem;
+            right: 2rem;
+            z-index: 998;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.2rem;
+            width: 230px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            display: none;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .a11y-panel.open { display: flex; }
+
+        .a11y-panel-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--dark);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 0.5rem;
+            margin-bottom: 0.2rem;
+            text-align: center;
+        }
+
+        .a11y-option {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--light-bg);
+            border: 1.5px solid var(--border);
+            border-radius: 8px;
+            padding: 0.55rem 0.8rem;
+            cursor: pointer;
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 0.88rem;
+            color: var(--text);
+            text-align: right;
+            width: 100%;
+            transition: background 0.15s, border-color 0.15s;
+        }
+        .a11y-option:hover, .a11y-option:focus-visible {
+            background: #e8f0fc;
+            border-color: #1a5fb4;
+            outline: none;
+        }
+        .a11y-option.active {
+            background: #1a5fb4;
+            color: white;
+            border-color: #1a5fb4;
+        }
+        .a11y-option .icon { font-size: 1.1rem; flex-shrink: 0; }
+
+        .a11y-stmt-link {
+            display: block;
+            text-align: center;
+            margin-top: 0.3rem;
+            font-size: 0.82rem;
+            color: #1a5fb4;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .a11y-stmt-link:hover { color: #1347a0; }
+
+        /* ── HIGH CONTRAST MODE ── */
+        body.high-contrast {
+            --dark: #000000;
+            --light-bg: #000000;
+            --white: #000000;
+            --text: #ffffff;
+            --text-light: #ffffff;
+            --border: #ffffff;
+            --accent: #ffff00;
+            background: #000 !important;
+            color: #fff !important;
+        }
+        body.high-contrast header { background: #000; border-bottom: 2px solid #fff; }
+        body.high-contrast .product-card { background: #000; border-color: #fff; }
+        body.high-contrast .product-name,
+        body.high-contrast .product-category { color: #fff; }
+        body.high-contrast .filter-btn { background: #000; color: #fff; border-color: #fff; }
+        body.high-contrast .filter-btn.active { background: #ffff00; color: #000; }
+        body.high-contrast .about-strip,
+        body.high-contrast .contact-strip { background: #000; }
+        body.high-contrast a { color: #ffff00; }
+
+        /* ── UNDERLINE LINKS ── */
+        body.underline-links a { text-decoration: underline !important; }
+
+        /* ── FOCUS VISIBLE ── */
+        *:focus-visible {
+            outline: 3px solid #1a5fb4;
+            outline-offset: 3px;
+            border-radius: 3px;
+        }
+
+        /* ── FLOATING WA ── */
+        .wa-float {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 999;
+            background: #25D366;
+            color: white;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 4px 18px rgba(37,211,102,0.4);
+            transition: transform 0.2s;
+        }
+        .wa-float:hover { transform: scale(1.1); }
+
+        /* ── LIGHTBOX ── */
+        .lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0,0,0,0.93);
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .lightbox.open { display: flex; }
+
+        .lightbox-inner {
+            position: relative;
+            max-width: 900px;
+            width: 100%;
+            max-height: 95vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-y: auto;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: -2.2rem;
+            left: 0;
+            color: white;
+            font-size: 1.8rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            line-height: 1;
+            opacity: 0.8;
+            transition: opacity 0.2s;
+        }
+        .lightbox-close:hover { opacity: 1; }
+
+        .lightbox-media-wrap {
+            position: relative;
+            width: 100%;
+            background: #111;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 300px;
+        }
+        #lightboxMedia {
+            max-width: 100%;
+            max-height: 65vh;
+            object-fit: contain;
+            display: block;
+        }
+
+        .lb-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.15);
+            border: none;
+            color: white;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.3rem;
+            line-height: 1;
+            transition: background 0.2s;
+            z-index: 2;
+        }
+        .lb-nav-btn:hover { background: rgba(255,255,255,0.3); }
+        .lb-prev { right: 12px; }
+        .lb-next { left: 12px; }
+
+        .lightbox-info {
+            color: white;
+            text-align: center;
+            padding: 1rem 0 0.5rem;
+            width: 100%;
+        }
+        .lightbox-info h3 {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.3rem;
+        }
+        .lightbox-info p { color: rgba(255,255,255,0.58); font-size: 0.9rem; }
+
+        .lightbox-thumbs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0.6rem 0 0.8rem;
+        }
+        .thumb {
+            width: 65px;
+            height: 65px;
+            border-radius: 5px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color 0.2s;
+            flex-shrink: 0;
+            background: #222;
+        }
+        .thumb.active { border-color: var(--accent); }
+        .thumb img { width: 100%; height: 100%; object-fit: cover; }
+        .thumb-video {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: white;
+        }
+
+        .lightbox-wa-btn {
+            background: #25D366;
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.92rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            transition: background 0.2s;
+        }
+        .lightbox-wa-btn:hover { background: #1ebe5d; }
+
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hamburger { display: flex; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+            .hero { height: 72vh; }
+            .workshops-features { flex-direction: column; align-items: center; }
+            .workshop-feature { max-width: 100%; width: 100%; }
+        }
+        @media (max-width: 420px) {
+            .products-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Mobile nav overlay */
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 68px;
+            right: 0; left: 0;
+            background: var(--dark);
+            padding: 1.2rem 2rem;
+            flex-direction: column;
+            gap: 1.2rem;
+            z-index: 99;
+        }
+        .mobile-nav.open { display: flex; }
+        .mobile-nav a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<!-- SKIP LINK -->
+<a href="#main-content" class="skip-link">דלג לתוכן הראשי</a>
+
+<!-- HEADER -->
+<header role="banner">
+    <a class="logo" href="#top">Aisha <span>Art Studio</span></a>
+    <nav>
+        <a href="#products">מוצרים</a>
+        <a href="#workshops">סדנאות</a>
+        <a href="#contact">צור קשר</a>
+    </nav>
+    <div class="header-right">
+        <a class="wa-header-btn" href="https://wa.me/972543775424" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
+            וואטסאפ
+        </a>
+        <button class="hamburger" onclick="toggleMobileNav()" aria-label="תפריט">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+    <a href="#products" onclick="closeMobileNav()">מוצרים</a>
+    <a href="#workshops" onclick="closeMobileNav()">סדנאות</a>
+    <a href="#contact" onclick="closeMobileNav()">צור קשר</a>
+</div>
+
+<!-- HERO -->
+<main id="main-content">
+<section class="hero" id="top" aria-label="כותרת ראשית">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+        <p class="hero-tag">עבודת יד &nbsp;·&nbsp; בטון פולימרי &nbsp;·&nbsp; עיצוב ייחודי</p>
+        <h1>Aisha Art Studio</h1>
+        <p>פריטי עיצוב בית מקוריים ומרהיבים, עשויים בטון פולימרי בעבודת יד. כל פריט הוא יצירה ייחודית שתשדרג את הבית שלך.</p>
+        <div class="hero-btns">
+            <a href="#products" class="btn-primary">לצפייה בפריטים</a>
+            <a href="https://wa.me/972543775424" target="_blank" class="btn-outline">הזמנה בוואטסאפ</a>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-strip">
+    <h2>אמנות מבטון לבית שלך</h2>
+    <p>
+        ב-Aisha Art Studio אנו יוצרים פריטי עיצוב בית ייחודיים מבטון פולימרי — חומר עמיד, אלגנטי ומודרני.
+        כל פריט מעוצב ומיוצר בעבודת יד עם תשומת לב לכל פרט,
+        ומשלב אסתטיקה עכשווית עם חומריות טבעית ואמיתית.
+    </p>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="products" aria-label="פריטים">
+    <h2 class="section-title">הפריטים שלנו</h2>
+    <p class="section-subtitle">לחץ על פריט לצפייה בכל התמונות ולהזמנה</p>
+
+    <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">הכל</button>
+        <button class="filter-btn" data-filter="נרות שבת">נרות שבת</button>
+        <button class="filter-btn" data-filter="עיצוב הבית">עיצוב הבית</button>
+        <button class="filter-btn" data-filter="סטים מיוחדים">סטים מיוחדים</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- WORKSHOPS -->
+<section class="workshops-section" id="workshops" aria-label="סדנאות">
+    <h2 class="section-title">סדנאות בטון פולימרי</h2>
+    <p>הצטרפו לסדנאות היצירה שלנו וגלו את הקסם של עבודה עם בטון פולימרי. מתאים לכולם — גם ללא ניסיון קודם!</p>
+    <div class="workshops-features">
+        <div class="workshop-feature">
+            <div class="icon">🏺</div>
+            <h3>למתחילים</h3>
+            <p>הסדנה מתאימה לכל רמה, ללא צורך בניסיון קודם</p>
+        </div>
+        <div class="workshop-feature">
+            <div class="icon">✨</div>
+            <h3>פריט שלוקחים הביתה</h3>
+            <p>בסיום כל סדנה תקחו איתכם יצירה שלמה שיצרתם</p>
+        </div>
+        <div class="workshop-feature">
+            <div class="icon">👥</div>
+            <h3>קבוצות קטנות</h3>
+            <p>סדנאות בקבוצות קטנות לחוויה אישית ומיוחדת</p>
+        </div>
+    </div>
+    <a href="https://wa.me/972543775424?text=%D7%94%D7%99%D7%99!%20%D7%90%D7%A0%D7%99%20%D7%9E%D7%A2%D7%95%D7%A0%D7%99%D7%99%D7%9F%2F%D7%AA%20%D7%9C%D7%94%D7%A6%D7%98%D7%A8%D7%A3%20%D7%9C%D7%A1%D7%93%D7%A0%D7%AA%20%D7%91%D7%98%D7%95%D7%9F%20%F0%9F%8F%BA" target="_blank" class="btn-wa">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
+        הצטרפות לסדנה בוואטסאפ
+    </a>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-strip" id="contact" aria-label="צור קשר">
+    <h2>צור קשר</h2>
+    <p>לשאלות, הזמנות מיוחדות ומידע על סדנאות — אנחנו כאן!</p>
+    <div class="contact-links">
+        <a href="tel:+972543775424" class="contact-link phone">📞 054-377-5424</a>
+        <a href="https://wa.me/972543775424" target="_blank" class="contact-link whatsapp">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
+            וואטסאפ
+        </a>
+        <a href="https://wa.me/c/972543775424" target="_blank" class="contact-link catalog">📋 קטלוג</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+</main>
+<footer role="contentinfo">
+    <p>© 2025 <strong>Aisha Art Studio</strong> &nbsp;·&nbsp; כל הזכויות שמורות &nbsp;·&nbsp; עיצוב בית מבטון פולימרי בעבודת יד</p>
+</footer>
+
+<!-- ACCESSIBILITY PANEL -->
+<div class="a11y-panel" id="a11yPanel" role="dialog" aria-modal="false" aria-label="אפשרויות נגישות">
+    <div class="a11y-panel-title">♿ נגישות</div>
+
+    <button class="a11y-option" id="btnFontUp" onclick="a11yFontSize(1)" aria-label="הגדל גודל גופן">
+        <span class="icon">A+</span> הגדל טקסט
+    </button>
+    <button class="a11y-option" id="btnFontDown" onclick="a11yFontSize(-1)" aria-label="הקטן גודל גופן">
+        <span class="icon">A-</span> הקטן טקסט
+    </button>
+    <button class="a11y-option" id="btnContrast" onclick="a11yToggle('high-contrast','btnContrast')" aria-pressed="false" aria-label="הפעל מצב ניגודיות גבוהה">
+        <span class="icon">◑</span> ניגודיות גבוהה
+    </button>
+    <button class="a11y-option" id="btnLinks" onclick="a11yToggle('underline-links','btnLinks')" aria-pressed="false" aria-label="הדגש קישורים">
+        <span class="icon">U̲</span> הדגש קישורים
+    </button>
+    <button class="a11y-option" id="btnReset" onclick="a11yReset()" aria-label="איפוס כל הגדרות הנגישות">
+        <span class="icon">↺</span> אפס הכל
+    </button>
+    <a href="accessibility.html" class="a11y-stmt-link" target="_blank">הצהרת נגישות</a>
+</div>
+
+<button class="a11y-btn" id="a11yToggleBtn"
+    onclick="toggleA11yPanel()"
+    aria-expanded="false"
+    aria-controls="a11yPanel"
+    aria-label="פתח תפריט נגישות"
+    title="נגישות">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="4" r="1.5"/>
+        <path d="M12 7v5"/>
+        <path d="M8 9h8"/>
+        <path d="M10 14l-2 5"/>
+        <path d="M14 14l2 5"/>
+    </svg>
+</button>
+
+<!-- FLOATING WA -->
+<a href="https://wa.me/972543775424" class="wa-float" target="_blank" title="שלח הודעה בוואטסאפ">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
+</a>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxBg(event)" role="dialog" aria-modal="true" aria-labelledby="lbName">
+    <div class="lightbox-inner">
+        <button class="lightbox-close" onclick="closeLightbox()" aria-label="סגור">✕</button>
+
+        <div class="lightbox-media-wrap">
+            <button class="lb-nav-btn lb-prev" onclick="changeMedia(-1)" aria-label="תמונה קודמת">‹</button>
+            <img id="lightboxMedia" src="" alt="">
+            <button class="lb-nav-btn lb-next" onclick="changeMedia(1)" aria-label="תמונה הבאה">›</button>
+        </div>
+
+        <div class="lightbox-info">
+            <h3 id="lbName"></h3>
+            <p id="lbDesc"></p>
+        </div>
+
+        <div class="lightbox-thumbs" id="lbThumbs"></div>
+
+        <a id="lbWaBtn" href="#" target="_blank" class="lightbox-wa-btn">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.558 4.118 1.535 5.845L.057 23.986l6.304-1.654A11.945 11.945 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.795 9.795 0 01-5.028-1.382l-.36-.214-3.737.98 1-3.646-.234-.374A9.775 9.775 0 012.182 12C2.182 6.574 6.574 2.182 12 2.182c5.426 0 9.818 4.392 9.818 9.818 0 5.426-4.392 9.818-9.818 9.818z"/></svg>
+            שאלי על פריט זה בוואטסאפ
+        </a>
+    </div>
+</div>
+
+<script>
+const WA_BASE = 'https://wa.me/972543775424';
+
+const products = [
+    {
+        name: 'מעמדי נרות שבת – לוטוס',
+        desc: 'זוג מעמדי נרות שבת בצורת פרח לוטוס על מגש אובלי, עשויים בטון פולימרי',
+        category: 'נרות שבת',
+        media: [
+            'items/1/WhatsApp Image 2026-03-08 at 16.28.29.jpeg',
+            'items/1/WhatsApp Image 2026-03-08 at 16.28.29 (1).jpeg',
+            'items/1/WhatsApp Image 2026-03-08 at 16.28.31.jpeg'
+        ]
+    },
+    {
+        name: 'מעמדי נרות שבת – כדורי',
+        desc: 'זוג מעמדי נרות שבת בצורה כדורית מחורצת על מגש אובלי, עשויים בטון פולימרי',
+        category: 'נרות שבת',
+        media: [
+            'items/2/WhatsApp Image 2026-03-08 at 16.28.29.jpeg',
+            'items/2/WhatsApp Image 2026-03-08 at 16.28.29 (1).jpeg',
+            'items/2/WhatsApp Image 2026-03-08 at 16.28.29 (2).jpeg',
+            'items/2/WhatsApp Image 2026-03-08 at 16.28.31.jpeg'
+        ]
+    },
+    {
+        name: 'מעמדי נרות שבת שלום',
+        desc: 'זוג מעמדי נרות שבת בצורת כיפה עם כתובת "שלום שבת", על מגש אובלי',
+        category: 'נרות שבת',
+        media: [
+            'items/3/WhatsApp Image 2026-03-08 at 16.28.29.jpeg',
+            'items/3/WhatsApp Image 2026-03-08 at 16.28.30 (1).jpeg',
+            'items/3/WhatsApp Image 2026-03-08 at 16.28.30.jpeg'
+        ]
+    },
+    {
+        name: 'מעמדי נרות – פטרייה',
+        desc: 'זוג מעמדי נרות בצורת פטרייה מינימליסטית מבטון פולימרי',
+        category: 'נרות שבת',
+        media: ['items/WhatsApp Image 2026-03-08 at 16.28.31.jpeg']
+    },
+    {
+        name: 'מעמדי נרות – טבעת',
+        desc: 'זוג מעמדי נרות בצורת טבעת על מגש אובלי, עשויים בטון פולימרי',
+        category: 'נרות שבת',
+        media: ['items/WhatsApp Image 2026-03-08 at 16.28.31b.jpeg']
+    },
+    {
+        name: 'סט שבת – סרוג ואגרטל',
+        desc: 'סט שבת הכולל זוג מעמדי נרות בטקסטורת סריגה ואגרטל מחורץ על מגש אורגני',
+        category: 'סטים מיוחדים',
+        media: [
+            'items/4/WhatsApp Image 2026-03-08 at 16.28.30.jpeg',
+            'items/4/WhatsApp Image 2026-03-08 at 16.28.30 (1).jpeg'
+        ]
+    },
+    {
+        name: 'סט ראש השנה',
+        desc: 'סט ראש השנה הכולל לוח ברכה אורגני, זוג מעמדי נרות ואגרטל על מגש עגול',
+        category: 'סטים מיוחדים',
+        media: [
+            'items/13/WhatsApp Image 2026-03-08 at 16.28.32.jpeg',
+            'items/13/WhatsApp Image 2026-03-08 at 16.28.32 (1).jpeg',
+            'items/13/WhatsApp Image 2026-03-08 at 16.28.33.jpeg'
+        ]
+    },
+    {
+        name: 'מגש חלה לשבת',
+        desc: 'מגש חלה מעוצב מבטון פולימרי — שילוב מושלם של אלגנטיות ופונקציונליות לשולחן שבת',
+        category: 'עיצוב הבית',
+        media: [
+            'items/5/WhatsApp Image 2026-03-08 at 16.28.30.jpeg',
+            'items/5/WhatsApp Image 2026-03-08 at 16.28.30 (1).jpeg',
+            'items/5/WhatsApp Video 2026-03-08 at 16.28.33.mp4'
+        ]
+    },
+    {
+        name: 'מפת ארץ ישראל',
+        desc: 'פסל קיר בצורת מפת ארץ ישראל מבטון פולימרי עם סמל מזוזה — מתנה ייחודית לבית',
+        category: 'עיצוב הבית',
+        media: [
+            'items/6/WhatsApp Image 2026-03-08 at 16.28.31.jpeg',
+            'items/6/WhatsApp Image 2026-03-08 at 16.28.31 (1).jpeg',
+            'items/6/WhatsApp Image 2026-03-08 at 16.28.31 (2).jpeg',
+            'items/6/WhatsApp Image 2026-03-08 at 16.28.32.jpeg'
+        ]
+    },
+    {
+        name: 'ברכת הבית',
+        desc: 'לוח ברכת הבית מבטון פולימרי עם כיתוב בעברית — יצירת אמנות לתלייה בבית',
+        category: 'עיצוב הבית',
+        media: [
+            'items/7/WhatsApp Image 2026-03-08 at 16.28.30.jpeg',
+            'items/7/WhatsApp Image 2026-03-08 at 16.28.32.jpeg'
+        ]
+    },
+    {
+        name: 'חנוכייה מודרנית',
+        desc: 'חנוכייה מודרנית ומינימליסטית מבטון פולימרי בעיצוב קשתות — פריט עיצובי ייחודי לחג',
+        category: 'עיצוב הבית',
+        media: [
+            'items/8/WhatsApp Image 2026-03-08 at 16.28.30.jpeg',
+            'items/8/WhatsApp Image 2026-03-08 at 16.28.30 (1).jpeg',
+            'items/8/WhatsApp Image 2026-03-08 at 16.28.31.jpeg',
+            'items/8/WhatsApp Video 2026-03-08 at 16.28.33.mp4'
+        ]
+    },
+    {
+        name: 'קערת אש ביו-אתנול',
+        desc: 'קערת בטון פולימרי עם אבני נחל שחורות ולהבת ביו-אתנול — אלמנט עיצובי מרהיב',
+        category: 'עיצוב הבית',
+        media: [
+            'items/10/WhatsApp Image 2026-03-08 at 16.28.32.jpeg',
+            'items/10/WhatsApp Video 2026-03-08 at 16.28.33.mp4'
+        ]
+    },
+    {
+        name: 'קערה דקורטיבית',
+        desc: 'קערה דקורטיבית אורגנית מבטון פולימרי — אלמנט עיצובי עדין ומיוחד לכל חדר',
+        category: 'עיצוב הבית',
+        media: [
+            'items/12/WhatsApp Image 2026-03-08 at 16.28.32.jpeg',
+            'items/12/WhatsApp Image 2026-03-08 at 16.28.32 (1).jpeg',
+            'items/12/WhatsApp Image 2026-03-08 at 16.28.32 (2).jpeg'
+        ]
+    },
+    {
+        name: 'מגש בועות',
+        desc: 'מגש עגול עם שפה מעוצבת מבועות, בגוון טרצו — ייחודי ואלגנטי',
+        category: 'עיצוב הבית',
+        media: ['items/WhatsApp Image 2026-03-08 at 16.28.32c.jpeg']
+    },
+    {
+        name: 'שעון בטון',
+        desc: 'שעון שולחני מינימליסטי עשוי בטון פולימרי — פריט עיצוב תפקודי ואסתטי',
+        category: 'עיצוב הבית',
+        media: ['items/WhatsApp Image 2026-03-08 at 16.28.32d.jpeg']
+    },
+    {
+        name: 'מזמור לתודה',
+        desc: 'לוח עגול מבטון פולימרי עם מזמור לתודה מחורט — מתנה מיוחדת ועיצוב קיר ייחודי',
+        category: 'עיצוב הבית',
+        media: ['items/WhatsApp Image 2026-03-08 at 16.28.33e.jpeg']
+    }
+];
+
+let curProduct = null;
+let curIdx = 0;
+
+function isVid(src) { return src.toLowerCase().endsWith('.mp4'); }
+
+function renderProducts(filter) {
+    const list = filter === 'all' ? products : products.filter(p => p.category === filter);
+    document.getElementById('productsGrid').innerHTML = list.map((p, i) => {
+        const ri = products.indexOf(p);
+        const thumb = p.media.find(m => !isVid(m)) || '';
+        const hasMulti = p.media.length > 1;
+        const hasVid = p.media.some(isVid);
+        return `<div class="product-card" onclick="openLightbox(${ri})" onkeydown="if(event.key==='Enter'||event.key===' ')openLightbox(${ri})" tabindex="0" role="button" aria-label="צפה בפריט: ${p.name}">
+            <div class="product-img-wrap">
+                <img src="${thumb}" alt="${p.name}" loading="lazy">
+                ${hasMulti ? `<div class="multi-badge">${hasVid ? '▶' : '🖼'} ${p.media.length}</div>` : ''}
+            </div>
+            <div class="product-info">
+                <div class="product-category">${p.category}</div>
+                <div class="product-name">${p.name}</div>
+                <div class="product-cta">לפרטים ורכישה ←</div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        renderProducts(this.dataset.filter);
+    });
+});
+
+function openLightbox(idx) {
+    curProduct = products[idx];
+    curIdx = 0;
+    showMedia();
+    renderThumbs();
+    document.getElementById('lbName').textContent = curProduct.name;
+    document.getElementById('lbDesc').textContent = curProduct.desc;
+    const msg = encodeURIComponent('היי! ראיתי את "' + curProduct.name + '" ורוצה לדעת יותר 🙏');
+    document.getElementById('lbWaBtn').href = WA_BASE + '?text=' + msg;
+    document.getElementById('lightbox').classList.add('open');
+    document.body.style.overflow = 'hidden';
+    updateNavVis();
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+    document.body.style.overflow = '';
+    const vid = document.getElementById('lightboxVideo');
+    if (vid) vid.pause();
+}
+
+function closeLightboxBg(e) {
+    if (e.target === document.getElementById('lightbox')) closeLightbox();
+}
+
+function showMedia() {
+    const src = curProduct.media[curIdx];
+    const wrap = document.querySelector('.lightbox-media-wrap');
+    const existing = document.getElementById('lightboxMedia') || document.getElementById('lightboxVideo');
+
+    if (isVid(src)) {
+        let vid = document.getElementById('lightboxVideo');
+        const img = document.getElementById('lightboxMedia');
+        if (img) img.style.display = 'none';
+        if (!vid) {
+            vid = document.createElement('video');
+            vid.id = 'lightboxVideo';
+            vid.controls = true;
+            vid.style.maxWidth = '100%';
+            vid.style.maxHeight = '65vh';
+            wrap.insertBefore(vid, wrap.querySelector('.lb-next'));
+        }
+        vid.src = src;
+        vid.style.display = 'block';
+        vid.play();
+    } else {
+        const vid = document.getElementById('lightboxVideo');
+        if (vid) { vid.pause(); vid.style.display = 'none'; }
+        const img = document.getElementById('lightboxMedia');
+        img.src = src;
+        img.style.display = 'block';
+    }
+
+    document.querySelectorAll('.thumb').forEach((t, i) => {
+        t.classList.toggle('active', i === curIdx);
+    });
+}
+
+function renderThumbs() {
+    document.getElementById('lbThumbs').innerHTML = curProduct.media.map((src, i) =>
+        `<div class="thumb ${i === curIdx ? 'active' : ''}" onclick="setMedia(${i})">
+            ${isVid(src)
+                ? '<div class="thumb-video">▶</div>'
+                : `<img src="${src}" alt="">`}
+        </div>`
+    ).join('');
+}
+
+function setMedia(i) {
+    const vid = document.getElementById('lightboxVideo');
+    if (vid) vid.pause();
+    curIdx = i;
+    showMedia();
+    document.querySelectorAll('.thumb').forEach((t, j) => t.classList.toggle('active', j === i));
+}
+
+function changeMedia(dir) {
+    const vid = document.getElementById('lightboxVideo');
+    if (vid) vid.pause();
+    curIdx = (curIdx + dir + curProduct.media.length) % curProduct.media.length;
+    showMedia();
+    document.querySelectorAll('.thumb').forEach((t, j) => t.classList.toggle('active', j === curIdx));
+}
+
+function updateNavVis() {
+    const show = curProduct && curProduct.media.length > 1;
+    document.querySelector('.lb-prev').style.display = show ? '' : 'none';
+    document.querySelector('.lb-next').style.display = show ? '' : 'none';
+}
+
+document.addEventListener('keydown', e => {
+    if (!document.getElementById('lightbox').classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') changeMedia(1);
+    if (e.key === 'ArrowRight') changeMedia(-1);
+});
+
+function toggleMobileNav() {
+    document.getElementById('mobileNav').classList.toggle('open');
+}
+function closeMobileNav() {
+    document.getElementById('mobileNav').classList.remove('open');
+}
+
+renderProducts('all');
+
+/* ── ACCESSIBILITY ── */
+let fontLevel = 0;
+
+function toggleA11yPanel() {
+    const panel = document.getElementById('a11yPanel');
+    const btn = document.getElementById('a11yToggleBtn');
+    const isOpen = panel.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    btn.setAttribute('aria-label', isOpen ? 'סגור תפריט נגישות' : 'פתח תפריט נגישות');
+    if (isOpen) {
+        // Focus first option for keyboard users
+        panel.querySelector('.a11y-option').focus();
+    }
+}
+
+function a11yToggle(cls, btnId) {
+    const active = document.body.classList.toggle(cls);
+    const btn = document.getElementById(btnId);
+    btn.classList.toggle('active', active);
+    btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    saveA11yState();
+}
+
+function a11yFontSize(dir) {
+    fontLevel = Math.max(-2, Math.min(4, fontLevel + dir));
+    document.documentElement.style.fontSize = (100 + fontLevel * 12.5) + '%';
+    document.getElementById('btnFontUp').classList.toggle('active', fontLevel > 0);
+    document.getElementById('btnFontDown').classList.toggle('active', fontLevel < 0);
+    saveA11yState();
+}
+
+function a11yReset() {
+    fontLevel = 0;
+    document.documentElement.style.fontSize = '';
+    document.body.classList.remove('high-contrast', 'underline-links');
+    ['btnContrast','btnLinks','btnFontUp','btnFontDown'].forEach(id => {
+        const el = document.getElementById(id);
+        el.classList.remove('active');
+        el.setAttribute('aria-pressed', 'false');
+    });
+    localStorage.removeItem('a11yState');
+}
+
+function saveA11yState() {
+    localStorage.setItem('a11yState', JSON.stringify({
+        fontLevel,
+        highContrast: document.body.classList.contains('high-contrast'),
+        underlineLinks: document.body.classList.contains('underline-links')
+    }));
+}
+
+function loadA11yState() {
+    try {
+        const s = JSON.parse(localStorage.getItem('a11yState') || 'null');
+        if (!s) return;
+        if (s.fontLevel) { fontLevel = s.fontLevel - 1; a11yFontSize(1); }
+        if (s.highContrast) a11yToggle('high-contrast', 'btnContrast');
+        if (s.underlineLinks) a11yToggle('underline-links', 'btnLinks');
+    } catch(e) {}
+}
+
+// Close panel on outside click
+document.addEventListener('click', e => {
+    const panel = document.getElementById('a11yPanel');
+    const btn = document.getElementById('a11yToggleBtn');
+    if (panel.classList.contains('open') && !panel.contains(e.target) && e.target !== btn) {
+        panel.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'פתח תפריט נגישות');
+    }
+});
+
+// Close panel on Escape
+document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && document.getElementById('a11yPanel').classList.contains('open')) {
+        document.getElementById('a11yPanel').classList.remove('open');
+        document.getElementById('a11yToggleBtn').setAttribute('aria-expanded', 'false');
+        document.getElementById('a11yToggleBtn').focus();
+    }
+});
+
+loadA11yState();
+</script>
+</body>
+</html>

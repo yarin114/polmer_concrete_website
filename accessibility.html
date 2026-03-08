@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הצהרת נגישות – Aisha Art Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --dark: #1e1c1a;
+            --accent: #b8956a;
+            --light-bg: #f7f5f2;
+            --white: #ffffff;
+            --text: #2d2b28;
+            --text-light: #7a776f;
+            --border: #e0dcd6;
+            --blue: #1a5fb4;
+        }
+
+        body {
+            font-family: 'Frank Ruhl Libre', serif;
+            background: var(--light-bg);
+            color: var(--text);
+            direction: rtl;
+            line-height: 1.85;
+        }
+
+        *:focus-visible {
+            outline: 3px solid var(--blue);
+            outline-offset: 3px;
+            border-radius: 3px;
+        }
+
+        /* HEADER */
+        header {
+            background: var(--dark);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            font-family: 'Frank Ruhl Libre', serif;
+            font-size: 1.3rem;
+            color: white;
+            text-decoration: none;
+            letter-spacing: 0.06em;
+        }
+        .logo span { color: var(--accent); }
+        .back-link {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: white; }
+
+        /* HERO STRIP */
+        .page-hero {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem 3.5rem;
+        }
+        .page-hero h1 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+        .page-hero p {
+            color: rgba(255,255,255,0.65);
+            font-size: 1rem;
+        }
+
+        /* CONTENT */
+        .page-content {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 3rem 2rem 5rem;
+        }
+
+        .section-block {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+        }
+
+        .section-block h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .section-block h2 .icon {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .section-block p {
+            color: var(--text-light);
+            margin-bottom: 0.8rem;
+            font-size: 1rem;
+        }
+        .section-block p:last-child { margin-bottom: 0; }
+
+        ul.a11y-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+        ul.a11y-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+        ul.a11y-list li::before {
+            content: '✓';
+            color: #25a244;
+            font-weight: 700;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+        ul.a11y-list li strong { color: var(--text); }
+
+        .contact-card {
+            background: var(--light-bg);
+            border-radius: 8px;
+            padding: 1.2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+            margin-top: 0.5rem;
+        }
+        .contact-card a {
+            color: var(--blue);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .contact-card a:hover { text-decoration: underline; }
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.97rem;
+            color: var(--text);
+        }
+        .contact-row .ci { font-size: 1.1rem; }
+
+        .badge-aa {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+            border-radius: 6px;
+            padding: 0.4rem 0.9rem;
+            font-size: 0.88rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .update-date {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 0.88rem;
+            margin-top: 2rem;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: rgba(255,255,255,0.45);
+            text-align: center;
+            padding: 1.8rem 2rem;
+            font-size: 0.85rem;
+        }
+        footer strong { color: rgba(255,255,255,0.8); }
+
+        @media (max-width: 600px) {
+            .page-content { padding: 2rem 1rem 4rem; }
+            .section-block { padding: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header role="banner">
+    <a class="logo" href="index.html">Aisha <span>Art Studio</span></a>
+    <a class="back-link" href="index.html">← חזרה לאתר</a>
+</header>
+
+<div class="page-hero">
+    <h1>♿ הצהרת נגישות</h1>
+    <p>Aisha Art Studio מחויבת לנגישות מלאה לכלל המשתמשים</p>
+</div>
+
+<main id="main-content" class="page-content">
+
+    <!-- INTRO -->
+    <div class="section-block">
+        <h2><span class="icon">🌟</span> המחויבות שלנו</h2>
+        <p>
+            אנו רואים חשיבות עליונה במתן שירות שוויוני, מכבד ונגיש לכלל הלקוחות, לרבות אנשים עם מוגבלויות.
+            אנו פועלים רבות כדי להנגיש את אתר האינטרנט ואת שירותי העיצוב והסדנאות שלנו,
+            במטרה לאפשר לכל אדם לגלוש, לבחון את הפריטים ולפנות אלינו בצורה נוחה, עצמאית ומלאה.
+        </p>
+    </div>
+
+    <!-- STANDARD -->
+    <div class="section-block">
+        <h2><span class="icon">📋</span> תאימות לתקן</h2>
+        <div class="badge-aa">✓ WCAG 2.1 Level AA &nbsp;|&nbsp; ת"י 5568</div>
+        <p>
+            אתר זה עומד בדרישות תקנות שוויון זכויות לאנשים עם מוגבלות (התאמות נגישות לשירות), התשע"ג 2013.
+        </p>
+        <p>
+            התאמות הנגישות בוצעו בהתאם להמלצות התקן הישראלי (ת"י 5568) לנגישות תכנים באינטרנט ברמת AA,
+            ומסמך WCAG 2.1 הבינלאומי.
+        </p>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="section-block">
+        <h2><span class="icon">⚙️</span> פעולות נגישות שבוצעו</h2>
+        <ul class="a11y-list">
+            <li><div><strong>ניווט מקלדת:</strong> האתר מותאם לגלישה בעזרת מקלדת בלבד (Tab, Enter, חיצים, Escape).</div></li>
+            <li><div><strong>קוראי מסך:</strong> האתר מותאם לתוכנות NVDA ו-JAWS, כולל תיאורי alt וtabindex מלאים.</div></li>
+            <li><div><strong>ARIA:</strong> שימוש ב-aria-label, aria-expanded, aria-modal, aria-live ו-role מתאים בכל הרכיבים הדינמיים.</div></li>
+            <li><div><strong>הגדלת טקסט:</strong> תמיכה בהגדלה עד 200% ללא פגיעה בפריסה, בשימוש ביחידות rem ו-em.</div></li>
+            <li><div><strong>ניגודיות גבוהה:</strong> מצב ניגודיות גבוהה זמין דרך כפתור הנגישות הצף.</div></li>
+            <li><div><strong>הדגשת קישורים:</strong> אפשרות להדגשת כל הקישורים באתר לנוחות הניווט.</div></li>
+            <li><div><strong>דילוג לתוכן ראשי:</strong> קישור "דלג לתוכן" מופיע ראשון בדף לטובת משתמשי מקלדת.</div></li>
+            <li><div><strong>מבנה סמנטי:</strong> שימוש בתגיות HTML5 תקניות: header, main, nav, section, footer, button.</div></li>
+            <li><div><strong>שמירת העדפות:</strong> הגדרות הנגישות נשמרות אוטומטית ב-localStorage בין ביקורים.</div></li>
+            <li><div><strong>תצוגה מגיבה:</strong> האתר מותאם לכל גדלי מסך ומכשירים.</div></li>
+        </ul>
+    </div>
+
+    <!-- SERVICE ACCESSIBILITY -->
+    <div class="section-block">
+        <h2><span class="icon">🤝</span> נגישות השירות</h2>
+        <p>
+            כדי להבטיח נגישות מלאה לכלל הלקוחות, ניתן לקיים פגישות ייעוץ ולצפות בפריטים באמצעות
+            שיחות וידאו (Zoom), שיחות טלפוניות, או פנייה כתובה בוואטסאפ — בהתאם להעדפת הלקוח.
+        </p>
+        <p>
+            לקוחות הזקוקים לתיאור מילולי של פריט כלשהו מוזמנים לפנות אלינו ישירות ונשמח לסייע.
+        </p>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section-block">
+        <h2><span class="icon">📞</span> פניות בנושא נגישות</h2>
+        <p>
+            אנו ממשיכים במאמצים לשפר ולתחזק את נגישות האתר. אם נתקלתם בבעיית נגישות כלשהי
+            או שאתם זקוקים להתאמה מיוחדת — נשמח לעמוד לרשותכם.
+        </p>
+        <p><strong>פרטי רכז הנגישות בעסק:</strong></p>
+        <div class="contact-card">
+            <div class="contact-row"><span class="ci">👤</span> <strong>שם:</strong>&nbsp; זיו סבאג</div>
+            <div class="contact-row">
+                <span class="ci">📞</span>
+                <span><strong>טלפון:</strong>&nbsp; <a href="tel:+972543775424">054-377-5424</a></span>
+            </div>
+            <div class="contact-row">
+                <span class="ci">📧</span>
+                <span><strong>דוא"ל:</strong>&nbsp; <a href="mailto:ziv971180@gmail.com">ziv971180@gmail.com</a></span>
+            </div>
+            <div class="contact-row">
+                <span class="ci">💬</span>
+                <span><strong>וואטסאפ:</strong>&nbsp;
+                    <a href="https://wa.me/972543775424" target="_blank" rel="noopener">שלח הודעה</a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <p class="update-date">תאריך עדכון ההצהרה: מרץ 2026</p>
+
+</main>
+
+<footer role="contentinfo">
+    <p>© 2025 <strong>Aisha Art Studio</strong> &nbsp;·&nbsp; כל הזכויות שמורות</p>
+</footer>
+
+</body>
+</html>
